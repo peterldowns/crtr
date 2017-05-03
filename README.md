@@ -24,3 +24,19 @@
 * May 3, 2017 – Written summary of project progress, draft of Digital Prototype, refinement of prototype, brief presentation & feedback in class
 * May 10, 2017 – Presentation of prototypes (dry run), draft of final paper
 * May 17, 2017 – Presentations of completed projects, design document completed 
+
+## Data
+All of the data in this project comes from the Metropolitan Museum of Art. They have lovingly published their data [as a CSV online](https://github.com/metmuseum/openaccess/blob/master/MetObjects.csv). Even just the metadata is too large to be committed to git; before the project can be run, it must be downloaded and inserted into the database using the scripts in this directory.
+
+```bash
+./data/get_metadata.sh # download metadata
+./data/prepare_subset.py # generate cleaned subset of data for use in this project
+./data/insert_subset.py # insert data into the database
+./data/download_images.py # download images for each piece of art in the database
+```
+
+### Generate cleaned subset of data for use in this project
+```bash
+```
+
+
