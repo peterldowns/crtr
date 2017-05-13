@@ -51,14 +51,14 @@ def update_urls(a, dump=None):
     if not r.status_code == 200:
         sys.stderr.write('FAILED (%d) %s\n' % (r.status_code, a.museum_link))
 
-    match = re.search(r'http\:\/\/.*CRDImages.*web-large.*jpg', r.text)
+    match = re.search(r'http\:\/\/.*CRDImages.*web-large.*jpg', r.text, re.I)
     if match:
-        a.image_url_small = match.group()
+        a.image_url_small = match.group().lower()
         updated = True
 
-    match = re.search(r'http\:\/\/.*CRDImages.*original.*jpg', r.text)
+    match = re.search(r'http\:\/\/.*CRDImages.*original.*jpg', r.text, re.I)
     if match:
-        a.image_url_large = match.group()
+        a.image_url_large = match.group().lower()
         updated = True
 
     if updated:
@@ -78,7 +78,6 @@ def load_dump():
         with open(JSON_DUMP_FILENAME, 'r') as fin:
             works = json.loads(fin.read())
             for work in works:
-                print('work', work)
                 mapping[work['fields']['museum_id']] = work['fields']
     except Exception as e:
         print(e)
@@ -87,11 +86,14 @@ def load_dump():
 
 def main():
     dump = load_dump()
+    print('loaded dump with %d entries' % len(dump))
     works = list(without_urls())
+    print('processing %d works without urls' % len(works))
     for i, artwork in enumerate(works):
         update_urls(artwork, dump)
         if i % 10:
             sys.stdout.write('\r%d/%d' % (i, len(works)))
+    dump_image_urls()
 
 
 if __name__ == '__main__':
