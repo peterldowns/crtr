@@ -46,6 +46,7 @@ from django.db import models
  'Title': 'Manuscript Sampler',
  '\ufeffObject Number': '34.100.72'}
 
+
 class Artist(models.Model):
     name = models.TextField()
     year_begin = models.IntegerField()
@@ -53,7 +54,16 @@ class Artist(models.Model):
     bio = models.TextField()
     nationality = models.TextField()
 
+
+class HighlightedArtworkManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_highlight=True)
+
+
 class Artwork(models.Model):
+    objects = models.Manager()
+    highlighted = HighlightedArtworkManager()
+
     id = models.AutoField(primary_key=True)
     title = models.TextField(blank=True, null=False)
     classification = models.TextField(blank=True, null=False)
@@ -62,12 +72,12 @@ class Artwork(models.Model):
     medium = models.TextField(blank=True, null=False)
 
     created = models.DateField(null=True)
-    museum_id = models.URLField(null=False)
+    museum_id = models.URLField(null=False, unique=True)
     museum_link = models.URLField(null=False)
     museum_name = models.TextField(null=False)
 
-    public_domain = models.BooleanField()
+    public_domain = models.BooleanField(default=False)
+    is_highlight = models.BooleanField(default=False)
 
     image_url_small = models.URLField(null=True)
     image_url_large = models.URLField(null=True)
-
