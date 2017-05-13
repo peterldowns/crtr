@@ -13,7 +13,7 @@ from art.models import Artwork  # noqa
 
 
 def load_full_collection():
-    with open('./MetObjects.csv') as fin:
+    with open('./metadata.csv') as fin:
         for row in DictReader(fin):
             yield row
 

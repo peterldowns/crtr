@@ -3,5 +3,15 @@ All of the data in this project comes from the Metropolitan Museum of Art. They 
 ```bash
 $ cd data
 $ make metadata.csv # download metadata
-$ ./inject.py # create database entries for artwork
+$ ./insert_works_into_db.py
+$ ./download_image_urls.py
+
+download_image_urls.py
+download_metadata.sh
+images_mapping.json
+insert_works_into_db.py
+Makefile
+metadata.csv
+__pycache__
+README.md
 ```
