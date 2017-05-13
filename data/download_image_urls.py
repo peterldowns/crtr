@@ -41,6 +41,7 @@ def update_urls(a, dump=None):
     if entry:
         a.image_url_small = entry['image_url_small']
         a.image_url_large = entry['image_url_large']
+        a.save()
 
     # Unless both urls were grabbed, have to re-fetch.
     if a.image_url_small and a.image_url_large:

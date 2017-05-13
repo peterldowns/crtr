@@ -25,10 +25,54 @@ def cc_only(data):
 
 
 def create_object(row):
-    # TODO: create Artist object.
+    # What a row looks like:
+    {'Artist Alpha Sort': '',
+     'Artist Begin Date': '',
+     'Artist Display Bio': '',
+     'Artist Display Name': '',
+     'Artist End Date': '',
+     'Artist Nationality': '',
+     'Artist Prefix': '',
+     'Artist Role': '',
+     'Artist Suffix': '',
+     'City': '',
+     'Classification': 'Drawings',
+     'Country': 'United States',
+     'County': '',
+     'Credit Line': 'Gift of Mrs. Robert W. de Forest, 1933',
+     'Culture': 'American',
+     'Department': 'American Decorative Arts',
+     'Dimensions': '7 1/2 x 13 1/4 in. (19.1 x 33.7 cm)',
+     'Dynasty': '',
+     'Excavation': '',
+     'Geography Type': 'Made in',
+     'Is Highlight': 'False',
+     'Is Public Domain': 'True',
+     'Link Resource': 'http://www.metmuseum.org/art/collection/search/4939',
+     'Locale': '',
+     'Locus': '',
+     'Medium': 'Ink and watercolor on paper',
+     'Metadata Date': '5/1/2017 8:00:22 AM',
+     'Object Begin Date': '1797',
+     'Object Date': 'ca. 1800',
+     'Object End Date': '1800',
+     'Object ID': '4939',
+     'Object Name': 'Manuscript sampler, Fraktur',
+     'Period': '',
+     'Portfolio': '',
+     'Region': '',
+     'Reign': '',
+     'Repository': 'Metropolitan Museum of Art, New York, NY',
+     'Rights and Reproduction': '',
+     'River': '',
+     'State': '',
+     'Subregion': '',
+     'Title': 'Manuscript Sampler',
+     '\ufeffObject Number': '34.100.72'}
 
-    a.museum_id = row['Object ID']
+    # TODO: create Artist object.
     a = Artwork()
+    a.museum_id = row['Object ID']
     a.title = row['Title']
     a.classification = row['Classification']
     a.department = row['Department']
