@@ -7,7 +7,6 @@ django.setup()
 
 from csv import DictReader
 from art.models import Artwork
-from art.models import Artist
 
 def load_full_collection():
     with open('./MetObjects.csv') as fin:

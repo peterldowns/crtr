@@ -62,9 +62,12 @@ class Artwork(models.Model):
     medium = models.TextField(blank=True, null=False)
 
     created = models.DateField(null=True)
-    museum_id = models.URLField(null=True)
-    museum_link = models.URLField(blank=True, null=False)
-    museum_name = models.TextField(blank=True, null=False)
+    museum_id = models.URLField(null=False)
+    museum_link = models.URLField(null=False)
+    museum_name = models.TextField(null=False)
 
     public_domain = models.BooleanField()
+
+    image_url_small = models.URLField(null=True)
+    image_url_large = models.URLField(null=True)
 
