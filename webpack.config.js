@@ -1,7 +1,7 @@
 const path = require('path');
 module.exports = {
     entry: {
-        index: './client/index.js',
+        index: './client/index.jsx',
     },
     output: {
         path: path.resolve('static/js'),
