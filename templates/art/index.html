@@ -2,7 +2,8 @@
 <html>
     <head>
         <title> test art </title>
-        <script> PROPS = {}; </script>
+        <link rel="stylesheet" href="/static/css/index.css"></link>
+        <script> PROPS = {{PROPS | safe}}; </script>
     </head>
     <body>
         <img src="{{header_artwork.image_url_small}}"/>

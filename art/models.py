@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from art.utils import DictModel
 
 
-class User(AbstractUser):
-    pass
+class User(DictModel, AbstractUser):
+    _json_fields = ('id', 'is_superuser', 'username', 'email')
 
 
 class Artist(models.Model):
@@ -19,7 +20,11 @@ class HighlightedArtworkManager(models.Manager):
         return super().get_queryset().filter(is_highlight=True)
 
 
-class Artwork(models.Model):
+class Artwork(DictModel, models.Model):
+    _json_fields = (
+            'id', 'title', 'classification', 'department', 'culture',
+            'medium', 'created', 'image_url_small', 'image_url_large')
+
     objects = models.Manager()
     highlighted = HighlightedArtworkManager()
 
@@ -42,7 +47,14 @@ class Artwork(models.Model):
     image_url_large = models.URLField(null=True)
 
 
-class Collection(models.Model):
+class Collection(DictModel, models.Model):
+    _json_fields = (
+            'id', 'title', 'user', 'date_created',
+            'date_modified')
+    _json_fields_m2m = {
+            'artworks': lambda s, a: a.all(),
+        }
+
     id = models.AutoField(primary_key=True)
     title = models.TextField(blank=True, null=False)
     user = models.ForeignKey('art.User', related_name='collections')

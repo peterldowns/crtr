@@ -11,7 +11,12 @@ class DictModel():
         out = {}
         for field in self._json_fields:
             out[field] = to_dict(getattr(self, field))
+        for field, l in getattr(self, '_json_fields_m2m', {}).items():
+            out[field] = to_dict(l(self, getattr(self, field)))
         return out
+
+    def to_json(self):
+        return to_json(self)
 
 
 def to_dict(blob):

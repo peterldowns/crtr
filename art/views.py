@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from art.models import Artwork
+from art.utils import props_template
 
 
 def random_artworks(n=10):
@@ -8,11 +8,11 @@ def random_artworks(n=10):
     return random.sample(all_art, n)
 
 
+@props_template('art/index.html')
 def index(request):
     some_art = random_artworks()
-    context = {
+    return {
         'art': some_art,
         'header_artwork': some_art[0],
         'user': None if request.user.is_anonymous() else request.user,
     }
-    return render(request, 'art/index.html', context)

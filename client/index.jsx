@@ -2,7 +2,7 @@ console.log('hello');
 var React = require('react');
 var DOM = require('react-dom');
 var Index = require('./components/index.jsx');
-console.log('Index:', Index);
+console.log('PROPS:', PROPS);
 
 DOM.render(
         <Index {...PROPS}/>,

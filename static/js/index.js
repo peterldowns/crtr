@@ -9942,7 +9942,7 @@ console.log('hello');
 var React = __webpack_require__(51);
 var DOM = __webpack_require__(50);
 var Index = __webpack_require__(82);
-console.log('Index:', Index);
+console.log('PROPS:', PROPS);
 
 DOM.render(React.createElement(Index, PROPS), document.getElementById('react-root'));
 
