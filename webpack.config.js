@@ -1,10 +1,12 @@
 const path = require('path');
 module.exports = {
+    devtool: 'source-map',
     entry: {
         index: './client/index.jsx',
     },
     output: {
         path: path.resolve('static/js'),
+        pathinfo: true,
         filename: 'index.js',
     },
     module: {

@@ -62,3 +62,10 @@ class Collection(DictModel, models.Model):
                                       related_name='collections')
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
+
+    @classmethod
+    def get_latest(C, n=5):
+        return (Collection.objects
+                          .annotate(num_artworks=models.Count('artworks'))
+                          .filter(num_artworks__gt=3)
+                          .order_by('-date_modified'))[:n]

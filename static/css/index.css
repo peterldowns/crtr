@@ -1,4 +1,62 @@
 
+/*
+        return <div className="collections-row">
+            <a className="collections-row-title" href="#"> {c.title} </a>
+            <a className="collections-row-user" href="#"> {c.user.username} </a>
+            <div className="collections-row-art">
+                {art.map((a) => {
+                    return <div className="collections-row-artwork">
+*/
+
+.index-collections-wrapper {
+    background-color: #F1F1F1;
+    padding: 80px;
+    box-sizing: border-box;
+}
+.collections-row-text {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+.collections-row-text a,
+.collections-row-text a:visited {
+    color: black;
+    text-decoration: underline;
+}
+.collections-row-text a:hover,
+.collections-row-text a:active {
+    color: #333;
+}
+.collections-row {
+    padding: 20px;
+    margin: auto;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border-radius: 4px;
+    text-align: center;
+    height: 300px;
+    overflow: hidden;
+}
+.collections-row-artwork {
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+    background-color: black;
+    background-image: contain;
+    margin: 0 8px;
+    height: 200px;
+    max-width: 240px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
 .logo_img{
   float: left;
   display: inline-block;
