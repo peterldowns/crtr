@@ -17,10 +17,10 @@ export class CollectionRow extends React.Component {
 
     render() {
         var c = this.props.collection;
-        var art = c.artworks.slice(0, 3)
+        var art = c.artworks.slice(0, 4);
         return <div className="collections-row">
             <div className="collections-row-text">
-                <a className="collections-row-title" href="#"> {c.title} </a>
+                <a className="collections-row-title" href="#"> {c.title} &rarr; </a>
             </div>
             <div className="collections-row-art">
                 {art.map((a) => {

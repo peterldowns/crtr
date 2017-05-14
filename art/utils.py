@@ -44,7 +44,6 @@ def props_template(path):
                 context[PROPS] = to_json(props)
             else:
                 context = {PROPS: to_json(context), request: request}
-            print('context:', context)
             return render(request, path, context)
         return _2
     return _1
