@@ -143,10 +143,11 @@ a{
 
 /* Slideshow container */
 .slideshow-container {
-
-  position: relative;
-
-  margin: auto;
+    width: 100%;
+    margin: 0;
+    padding: auto;
+    background-size: cover;
+    height: 800px;
 }
 
 .mySlides {

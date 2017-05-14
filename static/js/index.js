@@ -9541,6 +9541,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var React = __webpack_require__(51);
 var ReactDOM = __webpack_require__(50);
 
+var cssurl = function cssurl(s) {
+    return 'url(' + s + ')';
+};
+
 var Index = function (_React$Component) {
     _inherits(Index, _React$Component);
 
@@ -9549,6 +9553,8 @@ var Index = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
+        console.log(_this.props);
+        _this.props = props;
         _this.state = {};
         console.log('render!');
         return _this;
@@ -9567,7 +9573,7 @@ var Index = function (_React$Component) {
                     React.createElement(
                         'a',
                         { href: 'http://www.chonglii.com/index.html' },
-                        React.createElement('img', { className: 'logo_img', id: 'logo_img', src: 'resources/logo.png', alt: 'logo of Chong Li' })
+                        React.createElement('img', { className: 'logo_img', id: 'logo_img', src: '/static/img/logo.png', alt: 'logo of Chong Li' })
                     ),
                     React.createElement(
                         'div',
@@ -9630,76 +9636,7 @@ var Index = function (_React$Component) {
                 React.createElement(
                     'div',
                     null,
-                    React.createElement(
-                        'div',
-                        { className: 'slideshow-container' },
-                        React.createElement(
-                            'div',
-                            { className: 'mySlides fade' },
-                            React.createElement(
-                                'div',
-                                { className: 'numbertext' },
-                                '1 / 3'
-                            ),
-                            React.createElement('img', { src: 'resources/banner1.png' }),
-                            React.createElement(
-                                'div',
-                                { className: 'title' },
-                                'Tentacles Abound in Our',
-                                React.createElement('br', null),
-                                'Best Jellyfish Pictures'
-                            )
-                        ),
-                        React.createElement(
-                            'div',
-                            { className: 'mySlides fade' },
-                            React.createElement(
-                                'div',
-                                { className: 'numbertext' },
-                                '2 / 3'
-                            ),
-                            React.createElement('img', { src: 'resources/banner2.jpg' }),
-                            React.createElement(
-                                'div',
-                                { className: 'title' },
-                                'Amazing Circles'
-                            )
-                        ),
-                        React.createElement(
-                            'div',
-                            { className: 'mySlides fade' },
-                            React.createElement(
-                                'div',
-                                { className: 'numbertext' },
-                                '3 / 3'
-                            ),
-                            React.createElement('img', { src: 'resources/banner3.jpg' }),
-                            React.createElement(
-                                'div',
-                                { className: 'title' },
-                                'CYayoi Kusama Vs Mondrian'
-                            )
-                        ),
-                        React.createElement(
-                            'a',
-                            { className: 'prev' },
-                            '\u276E'
-                        ),
-                        React.createElement(
-                            'a',
-                            { className: 'next' },
-                            '\u276F'
-                        )
-                    ),
-                    React.createElement('br', null),
-                    React.createElement(
-                        'div',
-                        { style: { textAlign: 'center' } },
-                        React.createElement('span', { className: 'dot' }),
-                        React.createElement('span', { className: 'dot' }),
-                        React.createElement('span', { className: 'dot' })
-                    ),
-                    React.createElement('br', null),
+                    React.createElement('div', { className: 'slideshow-container', style: { backgroundImage: cssurl(this.props.header_img) } }),
                     React.createElement('hr', null),
                     '// curation',
                     React.createElement(
@@ -9942,7 +9879,6 @@ console.log('hello');
 var React = __webpack_require__(51);
 var DOM = __webpack_require__(50);
 var Index = __webpack_require__(82);
-console.log('PROPS:', PROPS);
 
 DOM.render(React.createElement(Index, PROPS), document.getElementById('react-root'));
 

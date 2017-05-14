@@ -13,6 +13,6 @@ def index(request):
     some_art = random_artworks()
     return {
         'art': some_art,
-        'header_artwork': some_art[0],
+        'header_img': 'http://images.metmuseum.org/CRDImages/ep/original/DT5111.jpg',
         'user': None if request.user.is_anonymous() else request.user,
     }
