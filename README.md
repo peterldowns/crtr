@@ -25,3 +25,13 @@
 * May 10, 2017 – Presentation of prototypes (dry run), draft of final paper
 * May 17, 2017 – Presentations of completed projects, design document completed 
 
+### Installation / Setup
+
+First, install [yarn](https://yarnpkg.com/) and Python 3.5. Then install the Python and Javascript dependencies:
+
+```bash
+$ pip install -r requirements.txt
+$ yarn install
+```
+
+Then, check out the instructions in `data/README.md` to learn how to set up the data.
