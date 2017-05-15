@@ -23137,7 +23137,7 @@ var goTo = function goTo(url) {
 };
 
 var artworkLink = function artworkLink(artwork) {
-    return "/artworks/" + artwork.id;
+    return "/artwork/" + artwork.id;
 };
 
 var ArtCard = function (_React$Component2) {

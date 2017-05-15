@@ -33,3 +33,19 @@ def home(request):
         'collections': user.collections.all(),
         'recommendations': recommend_to_user(10),
     }
+
+
+def search(request):
+    raise NotImplementedError
+
+
+def collections(request):
+    raise NotImplementedError
+
+
+def collection(request, collection_id):
+    raise NotImplementedError
+
+
+def artwork(request, artwork_id):
+    raise NotImplementedError

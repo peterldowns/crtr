@@ -36,7 +36,7 @@ const goTo = function(url) {
 };
 
 const artworkLink = function(artwork) {
-    return "/artworks/" + artwork.id;
+    return "/artwork/" + artwork.id;
 };
 
 class ArtCard extends React.Component {
