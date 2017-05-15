@@ -34,4 +34,10 @@ $ pip install -r requirements.txt
 $ yarn install
 ```
 
-Then, check out the instructions in `data/README.md` to learn how to set up the data.
+Then set up hte database:
+
+```bash
+$ ./manage.py migrate
+```
+
+Then, check out the instructions in `data/README.md` to learn how to populate the database with the dataset.
