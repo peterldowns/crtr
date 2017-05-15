@@ -26,7 +26,7 @@ SECRET_KEY = 'c5o%6-up-b%f7@vv-+vt^fv1pg61*t^3b$2j0#73g5xn-p&5)q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['peterdowns.com']
+ALLOWED_HOSTS = ['peterdowns.com', 'localhost']
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Libraries
-    "rest_framework",
     # Our code
     'art',
 ]
