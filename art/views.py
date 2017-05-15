@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from art.models import Artwork
 from art.utils import props_template
 from art.models import Collection
+from art.recommenders import recommend_to_user
 
 
 def random_artworks(n=10):
@@ -30,5 +31,5 @@ def home(request):
     return {
         'user': user,
         'collections': user.collections.all(),
-        'recommendations': [],
+        'recommendations': recommend_to_user(10),
     }

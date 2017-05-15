@@ -6,14 +6,6 @@ var ReactDOM = require('react-dom');
 var {Nav, NavLink} = require('./nav.jsx');
 var {CollectionRow} = require('./collection.jsx');
 
-const cssurl = function(s) {
-    return `url(${s})`;
-}
-
-const backgroundImg = function(url) {
-    return {backgroundImage: cssurl(url)};
-}
-
 const goTo = function(url) {
     return function() {
         window.location.href = url;

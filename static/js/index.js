@@ -23088,14 +23088,6 @@ var _require = __webpack_require__(/*! ./nav.jsx */ 82),
 var _require2 = __webpack_require__(/*! ./collection.jsx */ 184),
     CollectionRow = _require2.CollectionRow;
 
-var cssurl = function cssurl(s) {
-    return 'url(' + s + ')';
-};
-
-var backgroundImg = function backgroundImg(url) {
-    return { backgroundImage: cssurl(url) };
-};
-
 var goTo = function goTo(url) {
     return function () {
         window.location.href = url;

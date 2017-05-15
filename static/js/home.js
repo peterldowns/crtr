@@ -23084,31 +23084,107 @@ var _require = __webpack_require__(/*! ./nav.jsx */ 82),
     Nav = _require.Nav,
     NavLink = _require.NavLink;
 
-var Home = function (_React$Component) {
-    _inherits(Home, _React$Component);
+var TitleContainer = function (_React$Component) {
+    _inherits(TitleContainer, _React$Component);
+
+    function TitleContainer(props) {
+        _classCallCheck(this, TitleContainer);
+
+        var _this = _possibleConstructorReturn(this, (TitleContainer.__proto__ || Object.getPrototypeOf(TitleContainer)).call(this, props));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(TitleContainer, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                { className: 'title-container' },
+                React.createElement(
+                    'h1',
+                    { className: 'title-container-title' },
+                    this.props.title
+                ),
+                this.props.children
+            );
+        }
+    }]);
+
+    return TitleContainer;
+}(React.Component);
+
+var cssurl = function cssurl(s) {
+    return 'url(' + s + ')';
+};
+
+var backgroundImg = function backgroundImg(url) {
+    return { backgroundImage: cssurl(url) };
+};
+
+var ArtCard = function (_React$Component2) {
+    _inherits(ArtCard, _React$Component2);
+
+    function ArtCard(props) {
+        _classCallCheck(this, ArtCard);
+
+        var _this2 = _possibleConstructorReturn(this, (ArtCard.__proto__ || Object.getPrototypeOf(ArtCard)).call(this, props));
+
+        _this2.state = {};
+        return _this2;
+    }
+
+    _createClass(ArtCard, [{
+        key: 'render',
+        value: function render() {
+            var A = this.props.artwork;
+            return React.createElement(
+                'div',
+                { className: 'art-card' },
+                React.createElement('div', { className: 'art-card-art',
+                    style: backgroundImg(A.image_url_small) }),
+                React.createElement(
+                    'a',
+                    { className: 'art-card-link' },
+                    A.title
+                )
+            );
+        }
+    }]);
+
+    return ArtCard;
+}(React.Component);
+
+var Home = function (_React$Component3) {
+    _inherits(Home, _React$Component3);
 
     function Home(props) {
         _classCallCheck(this, Home);
 
-        var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+        var _this3 = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
-        _this.state = {};
-        return _this;
+        _this3.state = {};
+        return _this3;
     }
 
     _createClass(Home, [{
         key: 'render',
         value: function render() {
             var links = [new NavLink('Home', '/home'), new NavLink('Collections', '/collections'), new NavLink('Search', '/search'), new NavLink('Settings', '/settings')];
+            console.log('recommendations:', this.props.recommendations);
             return React.createElement(
                 'div',
                 null,
                 React.createElement(Nav, { user: this.props.user, links: links }),
                 React.createElement(
-                    'h1',
-                    null,
-                    ' Hello '
-                )
+                    TitleContainer,
+                    { title: "Recommended For You" },
+                    this.props.recommendations.map(function (a) {
+                        return React.createElement(ArtCard, { key: a.id, artwork: a });
+                    })
+                ),
+                React.createElement(TitleContainer, { title: "Collections" })
             );
         }
     }]);
