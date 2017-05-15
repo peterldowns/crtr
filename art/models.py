@@ -1,6 +1,8 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
 from art.utils import DictModel
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class User(DictModel, AbstractUser):
@@ -69,3 +71,16 @@ class Collection(DictModel, models.Model):
                           .annotate(num_artworks=models.Count('artworks'))
                           .filter(num_artworks__gt=3)
                           .order_by('-date_modified'))[:n]
+
+
+@receiver(post_save, sender=User)
+def ensure_collection(sender, **kwargs):
+    # Every user must have at least one Collection object so that when they
+    # first log in there's something to work with.
+    user = kwargs.get('instance')
+    if not user or user.collections.all().count() > 0:
+        return
+    Collection.objects.create(
+            title="%s's collection" % user.username,
+            user=user,
+    )

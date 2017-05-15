@@ -14,6 +14,12 @@ const backgroundImg = function(url) {
     return {backgroundImage: cssurl(url)};
 }
 
+const goTo = function(url) {
+    return function() {
+        window.location.href = url;
+    };
+}
+
 
 class Index extends React.Component {
     constructor(props) {
@@ -32,7 +38,7 @@ class Index extends React.Component {
                 <h4>Use this curator tool to boost up your great<br/>
                     ideas and make your curation awesome.
                 </h4>
-                <div className="button">Try Now</div>
+                <div className="button" onClick={goTo('/home')}>Try Now</div>
             </div>
             <div className="index-collections-wrapper">
                 <div className="index-collections-text">

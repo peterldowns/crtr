@@ -45,6 +45,9 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'art.User'
+LOGIN_URL = 'art-login'
+LOGIN_REDIRECT_URL = 'art-home'
+LOGOUT_REDIRECT_URL = 'art-index'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
