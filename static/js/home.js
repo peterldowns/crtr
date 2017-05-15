@@ -23084,6 +23084,9 @@ var _require = __webpack_require__(/*! ./nav.jsx */ 82),
     Nav = _require.Nav,
     NavLink = _require.NavLink;
 
+var _require2 = __webpack_require__(/*! ./collection.jsx */ 184),
+    CollectionRow = _require2.CollectionRow;
+
 var TitleContainer = function (_React$Component) {
     _inherits(TitleContainer, _React$Component);
 
@@ -23107,7 +23110,11 @@ var TitleContainer = function (_React$Component) {
                     { className: 'title-container-title' },
                     this.props.title
                 ),
-                this.props.children
+                React.createElement(
+                    'div',
+                    { className: 'title-container-contents' },
+                    this.props.children
+                )
             );
         }
     }]);
@@ -23121,6 +23128,16 @@ var cssurl = function cssurl(s) {
 
 var backgroundImg = function backgroundImg(url) {
     return { backgroundImage: cssurl(url) };
+};
+
+var goTo = function goTo(url) {
+    return function () {
+        window.location.href = url;
+    };
+};
+
+var artworkLink = function artworkLink(artwork) {
+    return "/artworks/" + artwork.id;
 };
 
 var ArtCard = function (_React$Component2) {
@@ -23141,7 +23158,7 @@ var ArtCard = function (_React$Component2) {
             var A = this.props.artwork;
             return React.createElement(
                 'div',
-                { className: 'art-card' },
+                { className: 'art-card', onClick: goTo(artworkLink(A)) },
                 React.createElement('div', { className: 'art-card-art',
                     style: backgroundImg(A.image_url_small) }),
                 React.createElement(
@@ -23179,12 +23196,27 @@ var Home = function (_React$Component3) {
                 React.createElement(Nav, { user: this.props.user, links: links }),
                 React.createElement(
                     TitleContainer,
+                    { title: "Collections" },
+                    this.props.collections.map(function (c) {
+                        return React.createElement(CollectionRow, { key: c.id, collection: c });
+                    }),
+                    React.createElement(
+                        'div',
+                        { className: 'collections-row dummy' },
+                        React.createElement(
+                            'div',
+                            { className: 'collections-row-text' },
+                            ' + New Collection '
+                        )
+                    )
+                ),
+                React.createElement(
+                    TitleContainer,
                     { title: "Recommended For You" },
                     this.props.recommendations.map(function (a) {
                         return React.createElement(ArtCard, { key: a.id, artwork: a });
                     })
-                ),
-                React.createElement(TitleContainer, { title: "Collections" })
+                )
             );
         }
     }]);
@@ -23196,7 +23228,92 @@ module.exports = Home;
 
 /***/ }),
 /* 183 */,
-/* 184 */,
+/* 184 */
+/* unknown exports provided */
+/* all exports used */
+/*!******************************************!*\
+  !*** ./client/components/collection.jsx ***!
+  \******************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = __webpack_require__(/*! react */ 26);
+var ReactDOM = __webpack_require__(/*! react-dom */ 25);
+
+var cssurl = function cssurl(s) {
+    return 'url(' + s + ')';
+};
+
+var backgroundImg = function backgroundImg(url) {
+    return { backgroundImage: cssurl(url) };
+};
+
+var collectionsLink = function collectionsLink(id) {
+    return "/collections/" + id;
+};
+
+var CollectionRow = exports.CollectionRow = function (_React$Component) {
+    _inherits(CollectionRow, _React$Component);
+
+    function CollectionRow(props) {
+        _classCallCheck(this, CollectionRow);
+
+        var _this = _possibleConstructorReturn(this, (CollectionRow.__proto__ || Object.getPrototypeOf(CollectionRow)).call(this, props));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(CollectionRow, [{
+        key: 'render',
+        value: function render() {
+            var c = this.props.collection;
+            var art = c.artworks.slice(0, 4);
+            return React.createElement(
+                'div',
+                { className: 'collections-row' },
+                React.createElement(
+                    'div',
+                    { className: 'collections-row-text' },
+                    React.createElement(
+                        'a',
+                        { className: 'collections-row-title', href: collectionsLink(c.id) },
+                        ' ',
+                        c.title,
+                        ' \u2192 '
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'collections-row-art' },
+                    art.map(function (a) {
+                        return React.createElement('div', { className: 'collections-row-artwork',
+                            key: a.id,
+                            style: backgroundImg(a.image_url_small) });
+                    })
+                )
+            );
+        }
+    }]);
+
+    return CollectionRow;
+}(React.Component);
+
+/***/ }),
 /* 185 */
 /* unknown exports provided */
 /* all exports used */

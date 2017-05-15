@@ -25,9 +25,22 @@
     margin: auto;
     box-sizing: border-box;
     background: #FFFFFF;
-    border-radius: 4px;
-    text-align: center;
+    text-align: left;
     overflow: hidden;
+    border-left: 4px solid #DEDEDE;
+    margin-bottom: 40px;
+}
+.collections-row.dummy {
+    background: #DEDEDE;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    max-width: 600px;
+    cursor: not-allowed;
+    margin-left: 0;
+}
+.collections-row.dummy .collections-row-text {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 .collections-row-artwork {
     display: inline-block;
@@ -135,7 +148,14 @@ nav.nav li.login {
   height: 50px;
 }
 
+.title-container-contents {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    text-align: left;
+}
 .art-card {
+    display: block;
     background: #F1F1F1;
     margin: 20px;
     width: 500px;
@@ -145,6 +165,7 @@ nav.nav li.login {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 4px;
     cursor: pointer;
+    transition: box-shadow 0.3s linear;
 }
 .art-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);

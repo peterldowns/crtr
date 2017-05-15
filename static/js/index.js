@@ -23197,8 +23197,13 @@ var ReactDOM = __webpack_require__(/*! react-dom */ 25);
 var cssurl = function cssurl(s) {
     return 'url(' + s + ')';
 };
+
 var backgroundImg = function backgroundImg(url) {
     return { backgroundImage: cssurl(url) };
+};
+
+var collectionsLink = function collectionsLink(id) {
+    return "/collections/" + id;
 };
 
 var CollectionRow = exports.CollectionRow = function (_React$Component) {
@@ -23226,7 +23231,7 @@ var CollectionRow = exports.CollectionRow = function (_React$Component) {
                     { className: 'collections-row-text' },
                     React.createElement(
                         'a',
-                        { className: 'collections-row-title', href: '#' },
+                        { className: 'collections-row-title', href: collectionsLink(c.id) },
                         ' ',
                         c.title,
                         ' \u2192 '
