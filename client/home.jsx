@@ -4,25 +4,11 @@ var DOM = require('react-dom');
 
 var {Nav, NavLink} = require('./components/nav.jsx');
 var {CollectionRow} = require('./components/collection.jsx');
-var {backgroundImg, artworkLink} = require('./components/utils.jsx');
+var {homeLinks, backgroundImg, artworkLink} = require('./components/utils.jsx');
+var {TitleContainer} = require('./components/titleContainer.jsx');
 
 
 
-class TitleContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    render() {
-        return <div className="title-container">
-            <h1 className="title-container-title">{this.props.title}</h1>
-            <div className="title-container-contents">
-                {this.props.children}
-            </div>
-        </div>
-    }
-}
 
 
 class ArtCard extends React.Component {
@@ -49,15 +35,8 @@ class Home extends React.Component {
     }
 
     render() {
-        var links = [
-            new NavLink('Home', '/home'),
-            new NavLink('Collections', '/collections'),
-            new NavLink('Search', '/search'),
-            new NavLink('Settings', '/settings'),
-        ];
-        console.log('recommendations:', this.props.recommendations);
         return <div>
-            <Nav user={this.props.user} links={links}/>
+            <Nav user={this.props.user} links={homeLinks}/>
             <TitleContainer title={"Collections"}>
                 {this.props.collections.map((c) => {
                     return <CollectionRow key={c.id} collection={c} small={true}/>;

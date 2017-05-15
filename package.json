@@ -6,6 +6,7 @@
   "author": "Peter Downs <peterldowns@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "moment": "^2.18.1",
     "path": "^0.12.7",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

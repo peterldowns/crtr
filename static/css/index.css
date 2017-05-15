@@ -1,3 +1,7 @@
+body {
+    max-width: 1200px;
+    margin: auto;
+}
 .index-collections-wrapper {
     background-color: #F1F1F1;
     padding: 80px;
@@ -165,6 +169,7 @@ nav.nav li.login {
 }
 .logo_img {
   height: 35px;
+  margin-top: 5px;
 }
 
 .title-container-contents {
@@ -215,20 +220,40 @@ nav.nav li.login {
 
 }
 
+.big-art-box {
+    display: block;
+    width: 100vw;
+    max-width: 1200px;
+    display: table;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    background: #010104;
+    font-family: "helvetica nene", sans-serif;
+}
+.big-art-info {
+    font-size: 22px;
+}
+.title-container .big-art {
+    margin-left: -20px;
+}
+.big-art-wrap {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.big-art-img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 90vh;
+    box-sizing: border-box;
+    border: 6px solid #FFF;
+}
+
 
 
 
 /* ---------- */
-
-
-
-
-
-.curation{
-  padding-top: 60px;
-  padding-bottom: 100px;
-
-}
 
 
 
@@ -271,149 +296,8 @@ h6{
   margin-top:10px;
   margin-bottom:5px;
 }
-.button {
-
-    border-width: 1px;
-    border-color: black;
-    background-color: transparent;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-
-
-
-
-.cardblock {
-  background-color: #F1F1F1;
-  padding-top: 50px;
-  padding-left: 150px;
-  padding-right: 150px;
-  padding-bottom: 100px;
-
-}
-
-.card {
-    /* Add shadows to create the "card" effect */
-    margin: 14px;
-    height: 325px;
-    width: 250px;
-    display: inline-block;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 5px; /* 5px rounded corners */
-    transition: 0.3s;
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-/* Add some padding inside the card container */
-.container {
-    padding: 2px 16px;
-}
 
 a{
   text-decoration: none;
 }
-
-
-
-
-
-
 * {box-sizing:border-box}
-
-
-.mySlides {
-    display: none;
-    margin-top: 40px;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.title {
-  color: #f2f2f2;
-  font-family: "helvetica nene", sans-serif;
-  font-size: 60px;
-  font-weight: 200;
-  position: absolute;
-  bottom:220px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  text-align: center;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor:pointer;
-  height: 13px;
-  width: 13px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 from art.models import Artwork
 from art.utils import props_template
 from art.models import Collection
@@ -35,6 +36,22 @@ def home(request):
     }
 
 
+@login_required
+@props_template('art/artwork.html')
+def artwork(request, artwork_id):
+    try:
+        artwork = Artwork.objects.get(id=artwork_id)
+    except Artwork.DoesNotExist:
+        raise Http404("Could not find that piece of art. "
+                      "Maybe you should go make it!")
+    return {
+        'title': artwork.title,
+        'artwork': artwork,
+        'user': request.user,
+        'collections': artwork.collections.all(),
+    }
+
+
 def search(request):
     raise NotImplementedError
 
@@ -44,8 +61,4 @@ def collections(request):
 
 
 def collection(request, collection_id):
-    raise NotImplementedError
-
-
-def artwork(request, artwork_id):
     raise NotImplementedError
