@@ -16,4 +16,4 @@ dev:
 	./node_modules/webpack/bin/webpack.js -w
 
 prod: venv/bin/activate
-	. venv/bin/activate && PRODUCTION=1 nohup ./server.py script args >stdout.log 2>stderr.log&
+	. venv/bin/activate && PRODUCTION=1 nohup ./manage.py runserver 0.0.0.0:8091 >stdout.log 2>stderr.log&
