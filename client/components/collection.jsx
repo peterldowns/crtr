@@ -2,20 +2,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-const cssurl = function(s) {
-    return `url(${s})`;
-};
-
-
-const backgroundImg = function(url) {
-    return {backgroundImage: cssurl(url)};
-};
-
-
-const collectionsLink = function(id) {
-    return "/collections/" + id;
-};
-
+var {cssurl, backgroundImg, collectionsLink} = require('./utils.jsx');
 
 export class CollectionRow extends React.Component {
     constructor(props) {
