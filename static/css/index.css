@@ -265,6 +265,9 @@ nav.nav li.login {
 .big-art-tools::after {
     clear: both;
 }
+.collection-artworks {
+    margin-left: -20px;
+}
 
 
 

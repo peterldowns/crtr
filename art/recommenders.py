@@ -1,9 +1,10 @@
 import time
 import random
 from art.models import Artwork
+from art.models import Collection
 
 
-def recommend_to_user(user, k=10):
+def art_from_user(user, k=10):
     r = random.Random()
     r.seed(int(time.time() / 10000))
     count = Artwork.highlighted.count()
@@ -12,18 +13,20 @@ def recommend_to_user(user, k=10):
         out.append(Artwork.highlighted.all()[int(r.random() * count)])
     return out
 
-#    return [
-#        Artwork.high
-#        Artwork.highlighted.all()[(id=id_)
-#        for id_ in
-#        r.sample(range(Artwork.highlighted.count()), count)
-#    ]
-#
+
+def collections_from_user(user, k=10):
+    r = random.Random()
+    r.seed(int(time.time() / 10000))
+    count = Collection.objects.all().count()
+    out = []
+    for i in range(k):
+        out.append(Collection.objects.all()[int(r.random() * count)])
+    return out
 
 
-def recommend_from_collection(user, collection):
+def art_from_collection(user, collection, k=10):
     raise NotImplementedError
 
 
-def recommend_from_artwork(user, artwork):
+def art_from_artwork(user, artwork, k=10):
     raise NotImplementedError

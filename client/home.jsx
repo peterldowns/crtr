@@ -4,28 +4,12 @@ var DOM = require('react-dom');
 
 var {Nav, NavLink} = require('./components/nav.jsx');
 var {CollectionRow} = require('./components/collection.jsx');
-var {homeLinks, backgroundImg, artworkLink} = require('./components/utils.jsx');
+var {homeLinks} = require('./components/utils.jsx');
 var {TitleContainer} = require('./components/titleContainer.jsx');
+var {ArtCard} = require('./components/artCard.jsx');
 
 
 
-
-
-class ArtCard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    render() {
-        var A = this.props.artwork;
-        return <a className="art-card" href={artworkLink(A)}>
-            <div className="art-card-art"
-                 style={backgroundImg(A.image_url_small)}></div>
-            <a className="art-card-link">{A.title}</a>
-        </a>;
-    }
-}
 
 
 class Home extends React.Component {

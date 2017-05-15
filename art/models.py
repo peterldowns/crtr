@@ -62,6 +62,7 @@ class Collection(DictModel, models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.TextField(blank=True, null=False)
+    description = models.TextField(blank=True, null=False)
     user = models.ForeignKey('art.User', related_name='collections')
     artworks = models.ManyToManyField('art.Artwork',
                                       related_name='collections')

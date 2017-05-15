@@ -2,6 +2,7 @@ import json
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_http_methods
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from art.models import Artwork
@@ -9,7 +10,8 @@ from art.utils import props_template
 from art.utils import json_response
 from art.utils import to_dict
 from art.models import Collection
-from art.recommenders import recommend_to_user
+from art.recommenders import art_from_user
+from art.recommenders import collections_from_user
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 
@@ -23,10 +25,8 @@ def random_artworks(n=10):
 @ensure_csrf_cookie
 @props_template('art/index.html')
 def index(request):
-    some_art = random_artworks()
     collections = Collection.get_latest()
     return {
-        'art': some_art,
         'collections': collections,
         'header_img': (
             'http://images.metmuseum.org/CRDImages/ep/original/DT5111.jpg'),
@@ -43,7 +43,7 @@ def home(request):
     return {
         'user': user,
         'collections': user.collections.all(),
-        'recommendations': recommend_to_user(10),
+        'recommendations': art_from_user(10),
     }
 
 
@@ -97,13 +97,49 @@ def artwork(request, artwork_id):
     }
 
 
-def search(request):
-    raise NotImplementedError
-
-
+@require_GET
+@login_required
+@ensure_csrf_cookie
+@props_template('art/collections.html')
 def collections(request):
+    user = request.user
+    latest = Collection.get_latest()
+    recommended = collections_from_user(user)
+    return {
+        'user': request.user,
+        'latest': latest,
+        'recommended': recommended,
+    }
+
+
+@require_http_methods(['GET', 'POST'])
+@login_required
+def collection(request, collection_id):
+    if request.method == 'GET':
+        return collection_get(request, collection_id)
+    if request.method == 'POST':
+        return collection_post(request, collection_id)
     raise NotImplementedError
 
 
-def collection(request, collection_id):
+def collection_post(request, collection_id):
+    user = request.user
+    collection = get_object_or_404(Collection, id=collection_id)
+    if not collection.user.id == user.id:
+        raise Http404("What collection?")
+    raise NotImplementedError
+
+
+@ensure_csrf_cookie
+@props_template('art/collection.html')
+def collection_get(request, collection_id):
+    user = request.user
+    collection = get_object_or_404(Collection, id=collection_id)
+    return {
+        'user': user,
+        'collection': collection,
+    }
+
+
+def search(request):
     raise NotImplementedError

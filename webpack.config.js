@@ -5,6 +5,8 @@ module.exports = {
         index: './client/index.jsx',
         home: './client/home.jsx',
         artwork: './client/artwork.jsx',
+        collections: './client/collections.jsx',
+        collection: './client/collection.jsx',
     },
     output: {
         path: path.resolve('static/js'),
