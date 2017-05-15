@@ -66,11 +66,10 @@ class Artwork extends React.Component {
 
     toggleCollectionStatus() {
         var page = this;
-        console.log('calling  toggle:', page);
         if (page.state.requestInProgress) {
-            console.error('debouncing');
             return;
         }
+        page.state.requestInProgress = true;
         var body = {
             'change': page.state.in_collection ? 'remove' : 'add',
             'artwork_id': page.state.artwork.id,
@@ -85,12 +84,12 @@ class Artwork extends React.Component {
             },
             json: true,
         }, function(error, response, body) {
+            page.state.requestInProgress = false;
             if (error) {
                 console.error(error, response, body);
                 return;
             }
             var newState = body;
-            console.log('setting state!', page, newState);
             page.setState(newState);
         });
     }
