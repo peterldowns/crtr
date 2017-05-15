@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from django.db.models.query import QuerySet
 from django.core.serializers.json import DjangoJSONEncoder
 import json
@@ -48,3 +49,9 @@ def props_template(path):
             return render(request, path, context)
         return _2
     return _1
+
+
+def json_response(fn):
+    def inner(*args, **kwargs):
+        return JsonResponse(fn(*args, **kwargs))
+    return inner

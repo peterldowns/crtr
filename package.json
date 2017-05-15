@@ -6,6 +6,8 @@
   "author": "Peter Downs <peterldowns@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "browser-request": "^0.3.3",
+    "js-cookie": "^2.1.4",
     "moment": "^2.18.1",
     "path": "^0.12.7",
     "react": "^15.5.4",

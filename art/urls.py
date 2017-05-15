@@ -9,6 +9,9 @@ urlpatterns = [
         url(r'^collections$', views.collections, name='art-collections'),
         url(r'^collections/(\d+)$', views.collection, name='art-collection'),
         url(r'^search', views.search, name='art-search'),
+        url(r'^api/change_collection_status',
+            views.change_collection_status,
+            name='art-change-collection-status'),
         # Authentication
         url(r'^login/$', auth_views.LoginView.as_view(), name='art-login'),
         url(r'^logout/$', auth_views.LogoutView.as_view(), name='art-logout'),

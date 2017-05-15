@@ -259,6 +259,12 @@ nav.nav li.login {
     box-sizing: border-box;
     border: 6px solid #FFF;
 }
+.big-art-tools {
+    float: right;
+}
+.big-art-tools::after {
+    clear: both;
+}
 
 
 
