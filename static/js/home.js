@@ -23348,9 +23348,14 @@ var TitleContainer = exports.TitleContainer = function (_React$Component) {
     _createClass(TitleContainer, [{
         key: 'render',
         value: function render() {
+            var className = "title-container";
+            if (this.props.empty) {
+                className += " empty";
+            }
+
             return React.createElement(
                 'div',
-                { className: 'title-container' },
+                { className: className },
                 React.createElement(
                     'h1',
                     { className: 'title-container-title' },

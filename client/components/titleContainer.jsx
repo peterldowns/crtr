@@ -8,7 +8,12 @@ export class TitleContainer extends React.Component {
     }
 
     render() {
-        return <div className="title-container">
+        var className = "title-container";
+        if (this.props.empty) {
+            className += " empty";
+        }
+
+        return <div className={className}>
             <h1 className="title-container-title">{this.props.title}</h1>
             <div className="title-container-contents">
                 {this.props.children}

@@ -46,21 +46,28 @@ class BigArt extends React.Component {
 class Artwork extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
-        this.state = {};
+        this.state = {
+            collections: props.collections || [],
+            collection: props.collection,
+            inCollection: props.in_collection,
+        };
+    }
+    renderCollections() {
+        return <TitleContainer empty={!this.state.collections.length}
+                               title={"Appears In"}>
+            {this.state.collections.map((c) => {
+                return <CollectionRow key={c.id} collection={c} small={true}/>;
+            })}
+        </TitleContainer>;
     }
 
     render() {
-        return <div>
+        return <div className="artwork-page">
             <Nav user={this.props.user} links={homeLinks}/>
             <TitleContainer title={this.props.artwork.title}>
                 <BigArt artwork={this.props.artwork}/>
             </TitleContainer>
-            <TitleContainer title={"Appears In"}>
-                {this.props.collections.map((c) => {
-                    return <CollectionRow key={c.id} collection={c} small={true}/>;
-                })}
-            </TitleContainer>
+            {this.renderCollections()}
         </div>;
     }
 }

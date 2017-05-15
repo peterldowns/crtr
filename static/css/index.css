@@ -1,6 +1,8 @@
 body {
     max-width: 1200px;
     margin: auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 .index-collections-wrapper {
     background-color: #F1F1F1;
@@ -102,11 +104,13 @@ body {
 .slideshow-container h4 {
     font-size: 40px;
 }
+.button {
+    cursor: pointer;
+}
 .slideshow-container .button {
     border: 2px solid #FFF;
     border-radius: 4px;
     padding: 20px;
-    font-size: 20px;
     width: 200px;
     background: white;
     font-size: 24px;
@@ -114,6 +118,7 @@ body {
     color: black;
     opacity: 0.9;
     transition: opacity 0.2s linear;
+    margin: auto;
 }
 .slideshow-container .button:hover {
     opacity: 1.0;
@@ -172,6 +177,9 @@ nav.nav li.login {
   margin-top: 5px;
 }
 
+.title-container.empty {
+    display: none;
+}
 .title-container-contents {
     max-width: 100%;
     box-sizing: border-box;
@@ -219,10 +227,12 @@ nav.nav li.login {
     font-size: 24px;
 
 }
-
+.artwork-page {
+    padding-bottom: 80px;
+}
 .big-art-box {
     display: block;
-    width: 100vw;
+    width: 100%;
     max-width: 1200px;
     display: table;
     padding-bottom: 40px;

@@ -44,11 +44,16 @@ def artwork(request, artwork_id):
     except Artwork.DoesNotExist:
         raise Http404("Could not find that piece of art. "
                       "Maybe you should go make it!")
+
+    collection = request.user.get_collection()
+    in_collection = collection.artworks.filter(id=artwork_id).count() > 0
     return {
         'title': artwork.title,
         'artwork': artwork,
         'user': request.user,
         'collections': artwork.collections.all(),
+        'collection': collection,
+        'in_collection': in_collection,
     }
 
 

@@ -23355,30 +23355,39 @@ var Artwork = function (_React$Component2) {
 
         var _this2 = _possibleConstructorReturn(this, (Artwork.__proto__ || Object.getPrototypeOf(Artwork)).call(this, props));
 
-        console.log(_this2.props);
-        _this2.state = {};
+        _this2.state = {
+            collections: props.collections || [],
+            collection: props.collection,
+            inCollection: props.in_collection
+        };
         return _this2;
     }
 
     _createClass(Artwork, [{
+        key: 'renderCollections',
+        value: function renderCollections() {
+            return React.createElement(
+                TitleContainer,
+                { empty: !this.state.collections.length,
+                    title: "Appears In" },
+                this.state.collections.map(function (c) {
+                    return React.createElement(CollectionRow, { key: c.id, collection: c, small: true });
+                })
+            );
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
-                null,
+                { className: 'artwork-page' },
                 React.createElement(Nav, { user: this.props.user, links: homeLinks }),
                 React.createElement(
                     TitleContainer,
                     { title: this.props.artwork.title },
                     React.createElement(BigArt, { artwork: this.props.artwork })
                 ),
-                React.createElement(
-                    TitleContainer,
-                    { title: "Appears In" },
-                    this.props.collections.map(function (c) {
-                        return React.createElement(CollectionRow, { key: c.id, collection: c, small: true });
-                    })
-                )
+                this.renderCollections()
             );
         }
     }]);
@@ -23431,9 +23440,14 @@ var TitleContainer = exports.TitleContainer = function (_React$Component) {
     _createClass(TitleContainer, [{
         key: 'render',
         value: function render() {
+            var className = "title-container";
+            if (this.props.empty) {
+                className += " empty";
+            }
+
             return React.createElement(
                 'div',
-                { className: 'title-container' },
+                { className: className },
                 React.createElement(
                     'h1',
                     { className: 'title-container-title' },

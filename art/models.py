@@ -8,6 +8,9 @@ from django.dispatch import receiver
 class User(DictModel, AbstractUser):
     _json_fields = ('id', 'is_superuser', 'username', 'email')
 
+    def get_collection(self):
+        return self.collections.first()
+
 
 class Artist(models.Model):
     name = models.TextField()
