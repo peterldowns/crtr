@@ -3,11 +3,12 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         index: './client/index.jsx',
+        home: './client/home.jsx',
     },
     output: {
         path: path.resolve('static/js'),
         pathinfo: true,
-        filename: 'index.js',
+        filename: '[name].js',
     },
     module: {
         loaders: [

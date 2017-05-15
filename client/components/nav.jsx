@@ -2,6 +2,19 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+
+export class NavLink {
+    constructor(title, url) {
+        this.title = title;
+        this.url = url;
+    }
+
+    key() {
+        return this.url;
+    }
+}
+
+
 export class Nav extends React.Component {
     constructor(props) {
         super(props);
@@ -22,10 +35,9 @@ export class Nav extends React.Component {
                             </a>
                         </li>
                         <li className="divider">
-                            <a href="#about" id="nav">About</a>
-                            <a href="#gallery">Gallery</a>
-                            <a href="#team">Team</a>
-                            <a href="#contact">Contact</a>
+                            {this.props.links.map((link) => {
+                                return <a key={link.key()} href={link.url}>{link.title}</a>;
+                            })}
                         </li>
                         <li className="divider"></li>
                         <UserLogin user={this.props.user}/>

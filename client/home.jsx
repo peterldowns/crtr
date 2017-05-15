@@ -1,7 +1,7 @@
 var React = require('react');
 var DOM = require('react-dom');
-var Index = require('./components/index.jsx');
+var Home = require('./components/home.jsx');
 
 DOM.render(
-        <Index {...PROPS}/>,
+        <Home {...PROPS}/>,
         document.getElementById('react-root'));

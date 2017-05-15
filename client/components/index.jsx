@@ -3,7 +3,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 
-var {Nav} = require('./nav.jsx');
+var {Nav, NavLink} = require('./nav.jsx');
 var {CollectionRow} = require('./collection.jsx');
 
 const cssurl = function(s) {
@@ -28,11 +28,16 @@ class Index extends React.Component {
         this.state = {};
     }
 
-
     render() {
+        var links = new Array(
+            new NavLink('About', '#about'),
+            new NavLink('Gallery', '#gallery'),
+            new NavLink('Team', '#team'),
+            new NavLink('Contact', '#contact'),
+        );
         var index = this;
         return <div>
-            <Nav user={this.props.user}/>
+            <Nav user={this.props.user} links={links}/>
             <div className="slideshow-container">
                 <h1>Curate Your Own Collection</h1>
                 <h4>Use this curator tool to boost up your great<br/>
