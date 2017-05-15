@@ -96,10 +96,9 @@ def create_object(row):
 
 if __name__ == '__main__':
     print('loading...')
-    cc = list(cc_only(load_full_collection()))
-    count = len(cc)
+    cc = cc_only(load_full_collection())
     for i, row in enumerate(cc):
         create_object(row)
         if i % 50:
-            sys.stdout.write('\r%d/%d' % (i, len(cc)))
+            sys.stdout.write('\r%d/???' % (i))
     print('\nDone.')
