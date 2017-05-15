@@ -23157,8 +23157,8 @@ var ArtCard = function (_React$Component2) {
         value: function render() {
             var A = this.props.artwork;
             return React.createElement(
-                'div',
-                { className: 'art-card', onClick: goTo(artworkLink(A)) },
+                'a',
+                { className: 'art-card', href: artworkLink(A) },
                 React.createElement('div', { className: 'art-card-art',
                     style: backgroundImg(A.image_url_small) }),
                 React.createElement(
@@ -23198,7 +23198,7 @@ var Home = function (_React$Component3) {
                     TitleContainer,
                     { title: "Collections" },
                     this.props.collections.map(function (c) {
-                        return React.createElement(CollectionRow, { key: c.id, collection: c });
+                        return React.createElement(CollectionRow, { key: c.id, collection: c, small: true });
                     }),
                     React.createElement(
                         'div',
@@ -23282,10 +23282,14 @@ var CollectionRow = exports.CollectionRow = function (_React$Component) {
         key: 'render',
         value: function render() {
             var c = this.props.collection;
-            var art = c.artworks.slice(0, 4);
+            var className = "collections-row";
+            var art = c.artworks.slice(0, 10);
+            if (this.props.small) {
+                className += " small";
+            }
             return React.createElement(
                 'div',
-                { className: 'collections-row' },
+                { className: className },
                 React.createElement(
                     'div',
                     { className: 'collections-row-text' },

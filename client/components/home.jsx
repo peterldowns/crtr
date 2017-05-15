@@ -47,11 +47,11 @@ class ArtCard extends React.Component {
 
     render() {
         var A = this.props.artwork;
-        return <div className="art-card" onClick={goTo(artworkLink(A))}>
+        return <a className="art-card" href={artworkLink(A)}>
             <div className="art-card-art"
                  style={backgroundImg(A.image_url_small)}></div>
             <a className="art-card-link">{A.title}</a>
-        </div>;
+        </a>;
     }
 }
 
@@ -74,7 +74,7 @@ class Home extends React.Component {
             <Nav user={this.props.user} links={links}/>
             <TitleContainer title={"Collections"}>
                 {this.props.collections.map((c) => {
-                    return <CollectionRow key={c.id} collection={c}/>;
+                    return <CollectionRow key={c.id} collection={c} small={true}/>;
                 })}
                 <div className="collections-row dummy">
                     <div className="collections-row-text"> + New Collection </div>

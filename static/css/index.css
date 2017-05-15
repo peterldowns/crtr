@@ -8,7 +8,6 @@
 }
 .collections-row-text {
     font-size: 40px;
-    padding-bottom: 20px;
     margin-bottom: 20px;
 
 }
@@ -27,8 +26,10 @@
     background: #FFFFFF;
     text-align: left;
     overflow: hidden;
-    border-left: 4px solid #DEDEDE;
+    /*border-left: 4px solid #DEDEDE;*/
+    padding-left: 20px;
     margin-bottom: 40px;
+    margin-left: -20px;
 }
 .collections-row.dummy {
     background: #DEDEDE;
@@ -37,23 +38,41 @@
     max-width: 600px;
     cursor: not-allowed;
     margin-left: 0;
+    transition: background 0.2s linear;
+}
+.collections-row.dummy:hover {
+    background: #CECECE;
 }
 .collections-row.dummy .collections-row-text {
     margin-bottom: 0;
     padding-bottom: 0;
+}
+.collections-row.small .collections-row-art {
+    height: 144px;
+    overflow: hidden;
+    white-space: pre;
+}
+.collections-row .collections-row-art {
+    height: 184px;
+    overflow: hidden;
+    white-space: pre;
 }
 .collections-row-artwork {
     display: inline-block;
     width: 100%;
     max-width: 800px;
     background-color: transparent;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin: 0 8px;
     height: 180px;
     max-width: 240px;
     box-sizing: border-box;
+}
+.collections-row.small .collections-row-artwork {
+    height: 140px;
+    max-width: 180px;
 }
 
 .slideshow-container {
@@ -90,7 +109,7 @@
     font-weight: bold;
     color: black;
     opacity: 0.9;
-    transition: opacity 1s linear;
+    transition: opacity 0.2s linear;
 }
 .slideshow-container .button:hover {
     opacity: 1.0;
@@ -126,7 +145,7 @@ nav.nav a {
   text-decoration: none;
   color: #9B9B9B;
   display: block;
-  transition: color 0.3s linear;
+  transition: color 0.2s linear;
   font-size: 18px;
 }
 nav.nav a:hover {
@@ -145,7 +164,7 @@ nav.nav li.login {
     white-space: nowrap;
 }
 .logo_img {
-  height: 50px;
+  height: 35px;
 }
 
 .title-container-contents {
@@ -153,6 +172,10 @@ nav.nav li.login {
     box-sizing: border-box;
     padding: 0 20px;
     text-align: left;
+}
+.title-container-title {
+    border-bottom: 1px solid black;
+    padding-bottom: 12px;
 }
 .art-card {
     display: block;
@@ -165,7 +188,7 @@ nav.nav li.login {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 4px;
     cursor: pointer;
-    transition: box-shadow 0.3s linear;
+    transition: box-shadow 0.2s linear;
 }
 .art-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);

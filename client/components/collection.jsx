@@ -25,8 +25,12 @@ export class CollectionRow extends React.Component {
 
     render() {
         var c = this.props.collection;
-        var art = c.artworks.slice(0, 4);
-        return <div className="collections-row">
+        var className = "collections-row";
+        var art = c.artworks.slice(0, 10);
+        if (this.props.small) {
+            className += " small";
+        }
+        return <div className={className}>
             <div className="collections-row-text">
                 <a className="collections-row-title" href={collectionsLink(c.id)}> {c.title} &rarr; </a>
             </div>

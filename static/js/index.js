@@ -23222,10 +23222,14 @@ var CollectionRow = exports.CollectionRow = function (_React$Component) {
         key: 'render',
         value: function render() {
             var c = this.props.collection;
-            var art = c.artworks.slice(0, 4);
+            var className = "collections-row";
+            var art = c.artworks.slice(0, 10);
+            if (this.props.small) {
+                className += " small";
+            }
             return React.createElement(
                 'div',
-                { className: 'collections-row' },
+                { className: className },
                 React.createElement(
                     'div',
                     { className: 'collections-row-text' },
