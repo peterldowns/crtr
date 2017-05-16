@@ -1,6 +1,7 @@
 'use strict';
 var React = require('react');
 var {backgroundImg, artworkLink} = require('./utils.jsx');
+var {TitleContainer} = require('./titleContainer.jsx');
 
 
 export class ArtCard extends React.Component {
@@ -14,7 +15,7 @@ export class ArtCard extends React.Component {
         return <a className="art-card" href={artworkLink(A)}>
             <div className="art-card-art"
                  style={backgroundImg(A.image_url_small)}></div>
-            <a className="art-card-link">{A.title}</a>
+            <span className="art-card-link">{A.title}</span>
         </a>;
     }
 }

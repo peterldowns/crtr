@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import numpy as np
 
 
 class User(DictModel, AbstractUser):
@@ -25,6 +26,12 @@ class HighlightedArtworkManager(models.Manager):
         return super().get_queryset().filter(is_highlight=True)
 
 
+class VectoredArtworkManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(
+                is_highlight=True, vector__isnull=False)
+
+
 class Artwork(DictModel, models.Model):
     _json_fields = (
             'id', 'title', 'classification', 'department', 'culture',
@@ -32,6 +39,7 @@ class Artwork(DictModel, models.Model):
 
     objects = models.Manager()
     highlighted = HighlightedArtworkManager()
+    vectored = VectoredArtworkManager()
 
     id = models.AutoField(primary_key=True)
     title = models.TextField(blank=True, null=False)
@@ -50,6 +58,11 @@ class Artwork(DictModel, models.Model):
 
     image_url_small = models.URLField(null=True)
     image_url_large = models.URLField(null=True)
+
+    vector = models.BinaryField(null=True)
+
+    def get_vector(self):
+        return np.frombuffer(self.vector)
 
 
 class Collection(DictModel, models.Model):
@@ -75,6 +88,10 @@ class Collection(DictModel, models.Model):
                           .annotate(num_artworks=models.Count('artworks'))
                           .filter(num_artworks__gt=3)
                           .order_by('-date_modified'))[:n]
+
+    def get_vector(self):
+        artworks = self.artworks.filter(vector__isnull=False)
+        return sum(a.get_vector() for a in artworks) / artworks.count()
 
 
 @receiver(post_save, sender=User)

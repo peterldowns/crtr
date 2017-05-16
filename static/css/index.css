@@ -176,7 +176,9 @@ nav.nav li.login {
   height: 35px;
   margin-top: 5px;
 }
-
+.title-container {
+    margin-bottom: 80px;
+}
 .title-container.empty {
     display: none;
 }
@@ -189,6 +191,7 @@ nav.nav li.login {
 .title-container-title {
     border-bottom: 1px solid black;
     padding-bottom: 12px;
+    font-size: 36px;
 }
 .art-card {
     display: block;

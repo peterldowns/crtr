@@ -7,6 +7,7 @@ var {Nav, NavLink} = require('./components/nav.jsx');
 var {CollectionRow} = require('./components/collection.jsx');
 var {homeLinks} = require('./components/utils.jsx');
 var {TitleContainer} = require('./components/titleContainer.jsx');
+var {ArtCard} = require('./components/artCard.jsx');
 var Cookies = require('js-cookie');
 var moment = require('moment');
 
@@ -110,6 +111,11 @@ class Artwork extends React.Component {
                 <BigArt artwork={this.props.artwork}
                         in_collection={this.state.in_collection}
                         toggle={this.toggleCollectionStatus.bind(this)}/>
+            </TitleContainer>
+            <TitleContainer title="Related Art">
+                {this.props.related.map((a) => {
+                    return <ArtCard key={a.id} artwork={a}/>;
+                })}
             </TitleContainer>
             {this.renderCollections()}
         </div>;
