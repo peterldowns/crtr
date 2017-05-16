@@ -7,6 +7,8 @@ import sys
 import json
 import cv2
 
+from vectors import get_vector
+
 from django.core import serializers
 from django.db.models import Q  # noqa
 
@@ -59,25 +61,27 @@ def get_image_filename(work):
 
 def get_image(work):
     filename = get_image_filename(work)
-    data = cv2.imread(filename)
-    if data is None:
-        print('downloading', work.image_url_small)
-        r = requests.get(work.image_url_small)
-        if not r.status_code == 200:
-            raise Exception(
-                    'Got %d: %s' % (r.status_code, work.image_url_small))
-        with open(filename, 'wb') as fout:
-            fout.write(r.content)
-        data = np.asarray(bytearray(r.content), dtype='uint8')
-        return cv2.imdecode(data, cv2.IMREAD_COLOR)
+    im = cv2.imread(filename)
+    if im is not None:
+        return im
+    print('downloading', work.image_url_small)
+    r = requests.get(work.image_url_small)
+    if not r.status_code == 200:
+        raise Exception(
+                'Got %d: %s' % (r.status_code, work.image_url_small))
+    with open(filename, 'wb') as fout:
+        fout.write(r.content)
+    data = np.asarray(bytearray(r.content), dtype='uint8')
+    return cv2.imdecode(data, cv2.IMREAD_COLOR)
 
 
 def compute_vector(work):
     if work.vector is not None:
-        print('work.vector!', work.vector)
+        sys.stdout.write(' skipping')
         return
     image = get_image(work)  # noqa
-    print('skipping')
+    work.vector = get_vector(image).tobytes()
+    work.save()
 
 
 def main():
