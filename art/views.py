@@ -11,6 +11,8 @@ from art.utils import json_response
 from art.utils import to_dict
 from art.models import Collection
 from art.recommenders import art_from_user
+from art.recommenders import art_from_artwork
+from art.recommenders import art_from_collection
 from art.recommenders import collections_from_user
 from django.views.decorators.csrf import ensure_csrf_cookie
 
@@ -43,7 +45,7 @@ def home(request):
     return {
         'user': user,
         'collections': user.collections.all(),
-        'recommendations': art_from_user(10),
+        'recommendations': art_from_user(user, 10),
     }
 
 
@@ -94,6 +96,7 @@ def artwork(request, artwork_id):
         'collections': artwork.collections.all(),
         'collection': collection,
         'in_collection': in_collection,
+        'related': art_from_artwork(request.user, artwork, 6),
     }
 
 
@@ -138,6 +141,7 @@ def collection_get(request, collection_id):
     return {
         'user': user,
         'collection': collection,
+        'related': art_from_collection(user, collection, 10)
     }
 
 

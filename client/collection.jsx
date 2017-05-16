@@ -7,6 +7,7 @@ var {Nav, NavLink} = require('./components/nav.jsx');
 var {CollectionRow} = require('./components/collection.jsx');
 var {homeLinks} = require('./components/utils.jsx');
 var {ArtCard} = require('./components/artCard.jsx');
+var {TitleContainer} = require('./components/titleContainer.jsx');
 
 
 class CollectionPage extends React.Component {
@@ -28,6 +29,11 @@ class CollectionPage extends React.Component {
                     return <ArtCard key={a.id} artwork={a}/>;
                 })}
             </div>
+            <TitleContainer title="Related Art">
+                {this.props.related.map((a) => {
+                    return <ArtCard key={a.id} artwork={a}/>;
+                })}
+            </TitleContainer>
         </div>;
     }
 }
@@ -36,4 +42,3 @@ class CollectionPage extends React.Component {
 DOM.render(
         <CollectionPage {...PROPS}/>,
         document.getElementById('react-root'));
-

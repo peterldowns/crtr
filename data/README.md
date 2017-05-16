@@ -5,13 +5,5 @@ $ cd data
 $ make metadata.csv # download metadata
 $ ./insert_works_into_db.py
 $ ./download_image_urls.py
-
-download_image_urls.py
-download_metadata.sh
-images_mapping.json
-insert_works_into_db.py
-Makefile
-metadata.csv
-__pycache__
-README.md
+$ ./calculate_vectors.py highlighted
 ```
