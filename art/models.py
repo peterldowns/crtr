@@ -51,6 +51,8 @@ class Artwork(DictModel, models.Model):
     image_url_small = models.URLField(null=True)
     image_url_large = models.URLField(null=True)
 
+    vector = models.BinaryField(null=True)
+
 
 class Collection(DictModel, models.Model):
     _json_fields = (
