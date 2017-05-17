@@ -21,11 +21,11 @@ class BigArt extends React.Component {
     renderControl() {
         if (this.props.in_collection) {
             return <div key="remove" className="button art-ctrl-remove" onClick={this.props.toggle}>
-                + My Collection
+                &ndash; My Collection
             </div>;
         }
         return <div key="add" className="button art-ctrl-add" onClick={this.props.toggle}>
-            &ndash; My Collection
+            + My Collection
         </div>;
     }
 
