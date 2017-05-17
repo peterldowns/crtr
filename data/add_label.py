@@ -13,7 +13,8 @@ from art.models import Artwork  # noqa
 
 
 def get_target_artworks():
-    return Artwork.vectored.filter(label='')
+    return Artwork.vectored.exclude(label='')
+    # return Artwork.vectored.filter(label='')
 
 
 def update_label(artwork):
@@ -27,7 +28,7 @@ def update_label(artwork):
         print('No label found')
         return
     tag = tags[0]
-    label = tag.text_content().strip()
+    label = ' '.join(tag.itertext()).strip()
     artwork.label = label
     artwork.save()
 
