@@ -1,25 +1,27 @@
 import json
+import random
+
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
+from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_POST
 from django.views.decorators.http import require_http_methods
-from django.shortcuts import get_object_or_404
-from django.http import Http404
+
 from art.models import Artwork
-from art.utils import props_template
-from art.utils import json_response
-from art.utils import to_dict
 from art.models import Collection
-from art.recommenders import art_from_user
 from art.recommenders import art_from_artwork
 from art.recommenders import art_from_collection
+from art.recommenders import art_from_user
 from art.recommenders import collections_from_user
-from django.views.decorators.csrf import ensure_csrf_cookie
+from art.utils import json_response
+from art.utils import props_template
+from art.utils import to_dict
 
 
 def random_artworks(n=10):
-    import random
-    all_art = list(Artwork.highlighted.all())
+    all_art = list(Artwork.vectored.all())
     return random.sample(all_art, n)
 
 

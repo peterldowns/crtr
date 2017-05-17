@@ -65,6 +65,13 @@ class Artwork(DictModel, models.Model):
         return np.frombuffer(self.vector)
 
 
+class VectoredCollectionManager(models.Manager):
+    def get_queryset(self):
+        return (super().get_queryset()
+                       .annotate(num_artworks=models.Count('artworks'))
+                       .filter(num_artworks__gt=0))
+
+
 class Collection(DictModel, models.Model):
     _json_fields = (
             'id', 'title', 'user', 'date_created',
@@ -72,6 +79,8 @@ class Collection(DictModel, models.Model):
     _json_fields_m2m = {
             'artworks': lambda s, a: a.all(),
         }
+
+    vectored = VectoredCollectionManager()
 
     id = models.AutoField(primary_key=True)
     title = models.TextField(blank=True, null=False)
