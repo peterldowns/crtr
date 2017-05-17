@@ -26,7 +26,11 @@ def get_collections_table():
 
 def art_from_user(user, k=10):
     colls = user.collections.all()
-    vector = sum(c.get_vector() for c in colls) / colls.count()
+    vectors = (c.get_vector() for c in colls)
+    vectors = [v for v in vectors if v is not None]
+    if not len(vectors):
+        return random_art_from_user(user, k)
+    vector = sum(v for v in vectors if v is not None) / len(vectors)
     collected = {a.id for c in colls for a in c.artworks.all()}
     ArtworkTable, mapping = get_artwork_table()
     related_ids = [
@@ -63,9 +67,10 @@ def collections_from_user(user, k=10):
 
 
 def art_from_collection(user, collection, k=10):
-    if collection.artworks.count() == 0:
-        return []
     vector = collection.get_vector()
+    if vector is None:
+        print('NO VECTOR FOR COLLECTION %d' % collection.id)
+        return random_art_from_user(user, k)
     collected = {
             a.id for c in user.collections.all() for a in c.artworks.all()}
     ArtworkTable, mapping = get_artwork_table()
@@ -82,7 +87,8 @@ def art_from_collection(user, collection, k=10):
 
 
 def art_from_artwork(user, artwork, k=10):
-    if artwork.vector is None:
+    vector = artwork.get_vector()
+    if vector is None:
         print('NO VECTOR FOR ART %d' % artwork.id)
         return []
     collected = {

@@ -61,8 +61,13 @@ class Artwork(DictModel, models.Model):
 
     vector = models.BinaryField(null=True)
 
+    def has_vector(self):
+        return self.vector is not None
+
     def get_vector(self):
-        return np.frombuffer(self.vector)
+        if self.has_vector():
+            return np.frombuffer(self.vector)
+        return None
 
 
 class VectoredCollectionManager(models.Manager):
@@ -101,6 +106,8 @@ class Collection(DictModel, models.Model):
 
     def get_vector(self):
         artworks = self.artworks.filter(vector__isnull=False)
+        if artworks.count() == 0:
+            return None
         return sum(a.get_vector() for a in artworks) / artworks.count()
 
 
