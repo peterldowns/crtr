@@ -22,18 +22,20 @@ class CollectionPage extends React.Component {
 
         return <div className="collection-page">
             <Nav user={this.props.user} links={homeLinks}/>
-            <h1> {C.title} </h1>
-            <p> {C.description} </p>
-            <div className="collection-artworks">
-                {C.artworks.map((a) => {
-                    return <ArtCard key={a.id} artwork={a}/>;
-                })}
+            <div className="body">
+                <h1> {C.title} </h1>
+                <p> {C.description} </p>
+                <div className="collection-artworks">
+                    {C.artworks.map((a) => {
+                        return <ArtCard key={a.id} artwork={a}/>;
+                    })}
+                </div>
+                <TitleContainer title="Related Art">
+                    {this.props.related.map((a) => {
+                        return <ArtCard key={a.id} artwork={a}/>;
+                    })}
+                </TitleContainer>
             </div>
-            <TitleContainer title="Related Art">
-                {this.props.related.map((a) => {
-                    return <ArtCard key={a.id} artwork={a}/>;
-                })}
-            </TitleContainer>
         </div>;
     }
 }

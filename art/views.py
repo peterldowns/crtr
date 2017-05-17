@@ -147,5 +147,23 @@ def collection_get(request, collection_id):
     }
 
 
+@require_http_methods(['GET', 'POST'])
+@login_required
 def search(request):
+    if request.method == 'GET':
+        return search_get(request)
+    if request.method == 'POST':
+        return search_post(request)
+    raise NotImplementedError
+
+
+@ensure_csrf_cookie
+@props_template('art/search.html')
+def search_get(request):
+    return {
+        'user': request.user,
+    }
+
+
+def search_post(request):
     raise NotImplementedError

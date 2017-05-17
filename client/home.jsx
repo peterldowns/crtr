@@ -9,9 +9,6 @@ var {TitleContainer} = require('./components/titleContainer.jsx');
 var {ArtCard} = require('./components/artCard.jsx');
 
 
-
-
-
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -21,19 +18,21 @@ class Home extends React.Component {
     render() {
         return <div>
             <Nav user={this.props.user} links={homeLinks}/>
-            <TitleContainer title={"Collections"}>
-                {this.props.collections.map((c) => {
-                    return <CollectionRow key={c.id} collection={c} small={true}/>;
-                })}
-                <div className="collections-row dummy">
-                    <div className="collections-row-text"> + New Collection </div>
-                </div>
-            </TitleContainer>
-            <TitleContainer title={"Recommended For You"}>
-                {this.props.recommendations.map((a) => {
-                    return <ArtCard key={a.id} artwork={a}/>;
-                })}
-            </TitleContainer>
+            <div className="body">
+                <TitleContainer title={"Collections"}>
+                    {this.props.collections.map((c) => {
+                        return <CollectionRow key={c.id} collection={c} small={true}/>;
+                    })}
+                    <div className="collections-row dummy">
+                        <div className="collections-row-text"> + New Collection </div>
+                    </div>
+                </TitleContainer>
+                <TitleContainer title={"Recommended For You"}>
+                    {this.props.recommendations.map((a) => {
+                        return <ArtCard key={a.id} artwork={a}/>;
+                    })}
+                </TitleContainer>
+            </div>
         </div>;
     }
 }

@@ -7,6 +7,7 @@ module.exports = {
         artwork: './client/artwork.jsx',
         collections: './client/collections.jsx',
         collection: './client/collection.jsx',
+        search: './client/search.jsx',
     },
     output: {
         path: path.resolve('static/js'),

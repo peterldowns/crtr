@@ -107,17 +107,19 @@ class Artwork extends React.Component {
     render() {
         return <div className="artwork-page">
             <Nav user={this.props.user} links={homeLinks}/>
-            <TitleContainer title={this.props.artwork.title}>
-                <BigArt artwork={this.props.artwork}
-                        in_collection={this.state.in_collection}
-                        toggle={this.toggleCollectionStatus.bind(this)}/>
-            </TitleContainer>
-            <TitleContainer title="Related Art">
-                {this.props.related.map((a) => {
-                    return <ArtCard key={a.id} artwork={a}/>;
-                })}
-            </TitleContainer>
-            {this.renderCollections()}
+            <div className="body">
+                <TitleContainer title={this.props.artwork.title}>
+                    <BigArt artwork={this.props.artwork}
+                            in_collection={this.state.in_collection}
+                            toggle={this.toggleCollectionStatus.bind(this)}/>
+                </TitleContainer>
+                <TitleContainer title="Related Art">
+                    {this.props.related.map((a) => {
+                        return <ArtCard key={a.id} artwork={a}/>;
+                    })}
+                </TitleContainer>
+                {this.renderCollections()}
+            </div>;
         </div>;
     }
 }

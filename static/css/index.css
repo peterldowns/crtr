@@ -1,8 +1,10 @@
 body {
     max-width: 1200px;
     margin: auto;
-    padding: 0 20px;
     box-sizing: border-box;
+}
+.body {
+    padding: 0 20px;
 }
 .index-collections-wrapper {
     background-color: #F1F1F1;
@@ -130,11 +132,11 @@ body {
 
 header {
     border-bottom: 1px solid #ccc;
-    margin-bottom: 9px;
+    padding: 10px;
+    background: #444;
 }
 nav.nav {
     display: table;
-    padding: 4px 10px;
 }
 nav.nav ul {
     display: table-row;
@@ -156,9 +158,10 @@ nav.nav a {
   display: block;
   transition: color 0.2s linear;
   font-size: 18px;
+  vertical-align: middle;
 }
 nav.nav a:hover {
-    color: black;
+    color: #FFF;
 }
 nav.nav li.divider {
     text-align: center;
