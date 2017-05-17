@@ -34,7 +34,7 @@ class VectoredArtworkManager(models.Manager):
 
 class Artwork(DictModel, models.Model):
     _json_fields = (
-            'id', 'title', 'classification', 'department', 'culture',
+            'id', 'title', 'label', 'classification', 'department', 'culture',
             'medium', 'created', 'image_url_small', 'image_url_large')
 
     objects = models.Manager()
@@ -43,6 +43,7 @@ class Artwork(DictModel, models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.TextField(blank=True, null=False)
+    label = models.TextField(blank=True, null=False)
     classification = models.TextField(blank=True, null=False)
     department = models.TextField(blank=True, null=False)
     culture = models.TextField(blank=True, null=False)

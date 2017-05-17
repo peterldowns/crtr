@@ -39,6 +39,16 @@ class BigArt extends React.Component {
             ['Medium', artwork.medium],
             ['Date', moment(artwork.created).format('MMMM Do YYYY')],
         ];
+
+        let labelClass = "big-art-label";
+        if (!artwork.label) {
+            labelClass += ' empty';
+        }
+
+        let tableClass = "big-art-info-table";
+        if (!artwork.label) {
+            tableClass += ' no-label'
+        }
         return <div>
             <div className="big-art-top body gray">
                 {this.renderImage()}
@@ -46,15 +56,20 @@ class BigArt extends React.Component {
                     {this.renderControl()}
                 </div>
             </div>
-            <div className="body white">
-                {info.filter(([name, value]) => !!value).map(([name, value]) => {
-                    return <div key={name} className="big-art-info">
-                        <div className="big-art-info-row">
-                            <div className="big-art-info-cell name">{name}</div>
-                            <div className="big-art-info-cell value">{value}</div>
-                        </div>
-                    </div>;
-                })}
+            <div className="big-art-bottom body white">
+                <div className="big-art-info">
+                    <div className={labelClass}>
+                        {artwork.label}
+                    </div>
+                    <div className={tableClass}>
+                        {info.filter(([name, value]) => !!value).map(([name, value]) => {
+                            return <div className="big-art-info-row" key={name}>
+                                <div className="big-art-info-cell name">{name}</div>
+                                <div className="big-art-info-cell value">{value}</div>
+                            </div>;
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
     }
