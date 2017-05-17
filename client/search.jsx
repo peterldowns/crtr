@@ -16,10 +16,11 @@ class SearchPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.debounce = 500 /*ms */;
+        this.debounce = 500 /*ms*/;
+        this.confirmation = 2000 /*ms*/;
         this.state = {
-            query: '',
-            results: [],
+            query: this.props.query,
+            results: this.props.results,
             timeout: null,
             counter: 1,
         };
@@ -55,7 +56,7 @@ class SearchPage extends React.Component {
         };
         request({
             method: 'POST',
-            uri: '/search',
+            uri: '/api/search',
             body: payload,
             headers: {
                 'X-CSRFToken': Cookies.get('csrftoken'),
@@ -70,7 +71,9 @@ class SearchPage extends React.Component {
                 console.error('response too old:', body);
                 return;
             }
-            console.log('body:', body);
+            // TODO: better state replacement over time
+            let url = '/search/' + encodeURI(query);
+            history.replaceState({}, '', url);
             S.setState({
                 results: body.results,
             });

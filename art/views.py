@@ -178,41 +178,42 @@ def collection_get(request, collection_id):
     }
 
 
-@require_http_methods(['GET', 'POST'])
+def do_search(query, count=50):
+    fields = ('title', 'classification', 'medium', 'department', 'culture')
+    results = []
+    for field_name in fields:
+        if len(results) >= count:
+            break
+        kwargs = {"%s__icontains" % field_name: query}
+        results.extend(
+                Artwork.vectored
+                       .filter(**kwargs)[:(count - len(results))])
+    return results
+
+
+@require_GET
 @login_required
-def search(request):
-    if request.method == 'GET':
-        return search_get(request)
-    if request.method == 'POST':
-        return search_post(request)
-    raise NotImplementedError
-
-
 @ensure_csrf_cookie
 @props_template('art/search.html')
-def search_get(request):
+def search(request, query=None):
+    print('query:', query)
     return {
         'user': request.user,
+        'query': query,
+        'results': do_search(query) if query else [],
     }
 
 
+@require_POST
 @login_required
 @json_response
-def search_post(request):
+def api_search(request):
     data = json.loads(request.body.decode('utf-8'))
     query = data.get('query')
-    fields = ('title', 'classification', 'medium', 'department', 'culture')
-    count = 50
     results = []
     error = None
     if query:
-        for field_name in fields:
-            if len(results) >= count:
-                break
-            kwargs = {"%s__icontains" % field_name: query}
-            results.extend(
-                    Artwork.vectored
-                           .filter(**kwargs)[:(count - len(results))])
+        results = do_search(query)
     else:
         error = 'Missing query'
 
