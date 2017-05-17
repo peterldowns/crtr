@@ -50,7 +50,7 @@ class LoginPage extends React.Component {
                                 <tr>
                                     <td className="label">Username:</td>
                                     <td className="input">
-                                        <input type="text" name="username" required autofocus value={this.state.username} onChange={this.onChange('username')}/>
+                                        <input type="text" name="username" required autoFocus value={this.state.username} onChange={this.onChange('username')}/>
                                     </td>
                                 </tr>
                                 <tr>

@@ -23,6 +23,7 @@ class SearchPage extends React.Component {
             results: this.props.results,
             timeout: null,
             counter: 1,
+            complete: this.props.query ? 'done' : 'never',
         };
 
         this.onQuery = this.onQuery.bind(this);
@@ -30,16 +31,28 @@ class SearchPage extends React.Component {
         this.sendQuery = this.sendQuery.bind(this);
     }
 
+    done() {
+        return this.state.complete === 'done';
+    }
+
+    inProgress() {
+        return this.state.complete === 'prog';
+    }
+
     onQuery(event) {
         let S = this;
         let query = event.target.value;
         let counter = this.state.counter + 1;
-        S.setState({query: query, counter: counter});
+        S.setState({query: query, counter: counter, complete: 'prog'});
         if (S.state.timeout !== null) {
             clearTimeout(S.state.timeout);
         }
-        let timeout = setTimeout(S.makeQuery(query, counter), S.debounce);
-        S.setState({timeout: timeout});
+        if (query) {
+            let timeout = setTimeout(S.makeQuery(query, counter), S.debounce);
+            S.setState({timeout: timeout});
+        } else {
+            S.setState({complete: 'never'});
+        }
     }
 
     makeQuery(query, counter) {
@@ -76,18 +89,39 @@ class SearchPage extends React.Component {
             history.replaceState({}, '', url);
             S.setState({
                 results: body.results,
+                complete: 'done',
             });
         });
+    }
+
+    renderStatus() {
+        if (this.done()) {
+            return `${this.state.results.length} results`
+        }
+        if (this.inProgress()) {
+            return 'Loading'
+        }
+        return ''
     }
 
 
     render() {
         return <div className="search-page">
             <Nav user={this.props.user} links={homeLinks}/>
-            <div className="search-bar body gray">
-                <h1> Search </h1>
-                <input type="text" value={this.state.query} onChange={this.onQuery}/>
-                <p> {this.state.query ? `${this.state.results.length} results` : ''} </p>
+            <div className="body gray">
+                <div className="search-bar body gray">
+                    <div className="search-bar-input">
+                        <h1 className="search-bar-title"> Search /</h1>
+                        <input className="search-bar-query"
+                                   type="text"
+                                   placeholder="What are you looking for?"
+                                   value={this.state.query}
+                                   onChange={this.onQuery} autoFocus/>
+                    </div>
+                    <p className="search-bar-results">
+                        {this.renderStatus()}
+                    </p>
+                </div>
             </div>
             <div className="search-results body white">
                 {this.state.results.map((artwork) => {

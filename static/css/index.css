@@ -10,7 +10,7 @@ body {
     background: #F0F0F0;
 }
 .body.white {
-    background; #FFFFFF;
+    background: #FFFFFF;
 }
 .index-collections-wrapper {
     background-color: #F1F1F1;
@@ -48,7 +48,7 @@ body {
     margin-left: -20px;
 }
 .collections-row.dummy {
-    background: #DEDEDE;
+    background: #a1d0af;
     color: #FFFFFF;
     margin-bottom: 0;
     max-width: 600px;
@@ -200,8 +200,8 @@ nav.nav li.login {
 }
 .title-container {
 }
-.title-container.empty {
-    display: none;
+.empty {
+    display: none !important;
 }
 .title-container-contents {
     max-width: 100%;

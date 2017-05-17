@@ -20,6 +20,7 @@ from art.recommenders import art_from_artwork
 from art.recommenders import art_from_collection
 from art.recommenders import art_from_user
 from art.recommenders import collections_from_user
+from art.recommenders import random_artworks
 from art.utils import json_response
 from art.utils import PROPS
 from art.utils import props_template
@@ -178,7 +179,7 @@ def collection_get(request, collection_id):
     }
 
 
-def do_search(query, count=50):
+def do_search(query, count=100):
     fields = ('title', 'classification', 'medium', 'department', 'culture')
     results = []
     for field_name in fields:
@@ -200,7 +201,7 @@ def search(request, query=None):
     return {
         'user': request.user,
         'query': query,
-        'results': do_search(query) if query else [],
+        'results': do_search(query) if query else random_artworks(10),
     }
 
 
