@@ -18,18 +18,20 @@ class Collections extends React.Component {
     render() {
         return <div className="collections-page">
             <Nav user={this.props.user} links={homeLinks}/>
-
-            <TitleContainer title="Recommended For You">
-                {this.props.recommended.map((c) => {
-                    return <CollectionRow key={c.id} collection={c}/>;
-                })}
-            </TitleContainer>
-
-            <TitleContainer title="Latest">
-                {this.props.latest.map((c) => {
-                    return <CollectionRow key={c.id} collection={c}/>;
-                })}
-            </TitleContainer>
+            <div className="body white">
+                <TitleContainer title="Recommended For You">
+                    {this.props.recommended.map((c) => {
+                        return <CollectionRow key={c.id} collection={c}/>;
+                    })}
+                </TitleContainer>
+            </div>
+            <div className="body gray">
+                <TitleContainer title="Latest">
+                    {this.props.latest.map((c) => {
+                        return <CollectionRow key={c.id} collection={c}/>;
+                    })}
+                </TitleContainer>
+            </div>
         </div>;
     }
 }

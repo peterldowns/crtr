@@ -18,20 +18,27 @@ class Home extends React.Component {
     render() {
         return <div>
             <Nav user={this.props.user} links={homeLinks}/>
-            <div className="body">
-                <TitleContainer title={"Collections"}>
-                    {this.props.collections.map((c) => {
-                        return <CollectionRow key={c.id} collection={c} small={true}/>;
-                    })}
-                    <div className="collections-row dummy">
-                        <div className="collections-row-text"> + New Collection </div>
+            <div className="body white">
+                <div className="title-container">
+                    <div className="title-container-contents">
+                        {this.props.collections.map((c) => {
+                            return <CollectionRow key={c.id} collection={c} small={true}/>;
+                        })}
+                        <div className="collections-row dummy">
+                            <div className="collections-row-text"> + New Collection </div>
+                        </div>
                     </div>
-                </TitleContainer>
-                <TitleContainer title={"Recommended For You"}>
-                    {this.props.recommendations.map((a) => {
-                        return <ArtCard key={a.id} artwork={a}/>;
-                    })}
-                </TitleContainer>
+                </div>
+            </div>
+            <div className="body gray">
+                <div className="title-container">
+                    <div className="title-container-title"> Recommended For You </div>
+                    <div className="title-container-contents">
+                        {this.props.recommendations.map((a) => {
+                            return <ArtCard key={a.id} artwork={a}/>;
+                        })}
+                    </div>
+                </div>
             </div>
         </div>;
     }

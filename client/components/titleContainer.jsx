@@ -12,6 +12,9 @@ export class TitleContainer extends React.Component {
         if (this.props.empty) {
             className += " empty";
         }
+        if (!this.props.noLine) {
+            className += " underline";
+        }
 
         return <div className={className}>
             <h1 className="title-container-title">{this.props.title}</h1>

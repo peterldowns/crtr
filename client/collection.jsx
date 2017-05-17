@@ -22,7 +22,7 @@ class CollectionPage extends React.Component {
 
         return <div className="collection-page">
             <Nav user={this.props.user} links={homeLinks}/>
-            <div className="body">
+            <div className="body gray">
                 <h1> {C.title} </h1>
                 <p> {C.description} </p>
                 <div className="collection-artworks">

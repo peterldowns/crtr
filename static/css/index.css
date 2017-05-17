@@ -1,10 +1,16 @@
 body {
-    max-width: 1200px;
     margin: auto;
     box-sizing: border-box;
 }
 .body {
-    padding: 0 20px;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+.body.gray {
+    background: #F0F0F0;
+}
+.body.white {
+    background; #FFFFFF;
 }
 .index-collections-wrapper {
     background-color: #F1F1F1;
@@ -12,6 +18,9 @@ body {
     box-sizing: border-box;
 }
 .index-collections-wrapper {
+    text-align: center;
+}
+.centered {
     text-align: center;
 }
 .collections-row-text {
@@ -31,7 +40,6 @@ body {
     padding: 20px;
     margin: auto;
     box-sizing: border-box;
-    background: #FFFFFF;
     text-align: left;
     overflow: hidden;
     /*border-left: 4px solid #DEDEDE;*/
@@ -81,6 +89,12 @@ body {
 .collections-row.small .collections-row-artwork {
     height: 140px;
     max-width: 180px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s linear;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.collections-row.small .collections-row-artwork:hover {
+    box-shadow: none;
 }
 
 .slideshow-container {
@@ -125,13 +139,15 @@ body {
 .slideshow-container .button:hover {
     opacity: 1.0;
 }
+.collection-page h1 {
+    font-size: 36px;
+}
 
 body {
   font-family: "helvetica nene", sans-serif;
 }
 
 header {
-    border-bottom: 1px solid #ccc;
     padding: 10px;
     background: #444;
 }
@@ -180,7 +196,6 @@ nav.nav li.login {
   margin-top: 5px;
 }
 .title-container {
-    margin-bottom: 80px;
 }
 .title-container.empty {
     display: none;
@@ -188,13 +203,15 @@ nav.nav li.login {
 .title-container-contents {
     max-width: 100%;
     box-sizing: border-box;
-    padding: 0 20px;
-    text-align: left;
 }
 .title-container-title {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid transparent;
     padding-bottom: 12px;
     font-size: 36px;
+    margin: 0;
+}
+.title-container-title.underline {
+    border-bottom-color: black;
 }
 .art-card {
     display: block;
@@ -204,13 +221,13 @@ nav.nav li.login {
     padding: 0;
     display: inline-block;
     vertical-align: top;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    border-radius: 2px;
     cursor: pointer;
     transition: box-shadow 0.2s linear;
 }
 .art-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
 }
 .art-card-art {
     max-width: 500px;
@@ -221,17 +238,16 @@ nav.nav li.login {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 .art-card-link {
-    display: block;
-    padding: 20px;
-    padding-left: 10px;
+    padding: 30px;
     text-align: left;
-
+    background: #FFF;
     color: #000;
     font-family: "helvetica nene", sans-serif;
     font-size: 24px;
-
 }
 .artwork-page {
     padding-bottom: 80px;
@@ -239,12 +255,9 @@ nav.nav li.login {
 .big-art-box {
     display: block;
     width: 100%;
-    max-width: 1200px;
     display: table;
-    padding-bottom: 40px;
-    padding-top: 40px;
-    background: #010104;
     font-family: "helvetica nene", sans-serif;
+    margin-bottom: 40px;
 }
 .big-art-info {
     font-size: 22px;
@@ -259,21 +272,52 @@ nav.nav li.login {
 }
 .big-art-img {
     display: block;
+    margin: 0;
     margin: auto;
     max-width: 100%;
     max-height: 90vh;
     box-sizing: border-box;
-    border: 6px solid #FFF;
+    padding: 0;
+    cursor: zoom-in;
+}
+.big-art-top.body {
+    padding: 40px;
+    padding-bottom: 10px;
+    text-align: center;
 }
 .big-art-tools {
-    float: right;
-    margin-left: 40px;
-    margin-bottom: 40px;
+    margin: 20px;
+    display: inline-block;
+    text-align: center;
     padding: 10px;
     border: 1px solid black;
 }
 .big-art-tools::after {
     clear: both;
+}
+
+.big-art-info {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    text-align: left;
+    display: table;
+}
+.big-art-info-row {
+    display: table-row;
+}
+.big-art-info-cell {
+    display: table-cell;
+    vertical-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
+}
+.big-art-info-cell.name {
+    width: 200px;
+    font-weight: bold;
+    padding-right: 40px;
+}
+.big-art-info-cell.value {
 }
 .collection-artworks {
     margin-left: -20px;

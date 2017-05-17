@@ -15,7 +15,9 @@ export class ArtCard extends React.Component {
         return <a className="art-card" href={artworkLink(A)}>
             <div className="art-card-art"
                  style={backgroundImg(A.image_url_small)}></div>
-            <span className="art-card-link">{A.title}</span>
+            <div className="art-card-link">
+                <div className="art-card-title">{A.title}</div>
+            </div>
         </a>;
     }
 }

@@ -8,9 +8,14 @@ export const backgroundImg = function(url) {
     return {backgroundImage: cssurl(url)};
 };
 
-export const goTo = function(url) {
+export const goTo = function(url, newPage) {
     return function() {
-        window.location.href = url;
+        if (newPage) {
+            var win = window.open(url, '_blank');
+            win.focus();
+        } else {
+            window.location.href = url;
+        }
     };
 };
 
@@ -24,7 +29,6 @@ export const collectionsLink = function(id) {
 
 export const homeLinks = [
     new NavLink('Home', '/home'),
-    new NavLink('Collections', '/collections'),
+    new NavLink('Browse', '/collections'),
     new NavLink('Search', '/search'),
-    new NavLink('Settings', '/settings'),
 ];
