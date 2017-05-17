@@ -12,6 +12,10 @@ var {ArtCard} = require('./components/artCard.jsx');
 var {TitleContainer} = require('./components/titleContainer.jsx');
 
 
+const galleryLink = function(id) {
+    return '/galleries/' + id;
+}
+
 class ContentEditable extends React.Component {
     constructor(props) {
         super(props);
@@ -177,9 +181,16 @@ class CollectionPage extends React.Component {
             <Nav user={this.props.user} links={homeLinks}/>
             <div className="body gray">
                 <div className={className}>
-                    <div className="edit-button"
-                         onClick={this.result()}>
-                        {this.state.editing ? 'Save' : 'Edit'}
+                    <div className="right-aligned">
+                        <div className="edit-button"
+                             onClick={this.result()}>
+                            {this.state.editing ? 'Save' : 'Edit'}
+                        </div>
+                        <a className="view-gallery"
+                           target="_blank"
+                           href={galleryLink(this.props.collection.id)}>
+                            View Gallery
+                        </a>
                     </div>
                     <EditableTitle
                         editable={this.state.editing}

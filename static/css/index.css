@@ -150,7 +150,7 @@ body {
 .collection-title {
     font-size: 36px;
     border-radius: 4px;
-    margin-right: 120px;
+    margin-right: 200px;
 }
 .collection-description {
     font-size: 24px;
@@ -167,15 +167,39 @@ body {
     max-width: 1200px;
     margin: auto;
 }
-.edit-button {
+.right-aligned {
     float: right;
-    padding: 10px 20px;
-    outline: 1px solid black;
-    margin-top: 10px;
+    text-align: right;
     margin-right: 10px;
-    width: 80px;
+    width: 180px;
+    padding: 0;
+    padding-left: 40px; 
+}
+.edit-button {
+    padding: 10px 20px;
+    margin-top: 10px;
     cursor: pointer;
     text-align: center;
+    display: inline-block;
+}
+.edit-button, .view-gallery {
+    width: 100%;
+    border: 1px solid #444;
+    color: #444;
+}
+.edit-button:hover, .view-gallery:hover {
+    border-color: #000;
+    color: #000;
+}
+.view-gallery {
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: block;
+}
+.editing .view-gallery {
+    display: none;
 }
 
 body {
