@@ -121,6 +121,10 @@ class CollectionPage extends React.Component {
     result() {
         let P = this;
         return function() {
+            if (!P.editable()) {
+                console.log('not editable');
+                return;
+            }
             if (P.state.requestInProgress) {
                 return;
             }
@@ -168,13 +172,22 @@ class CollectionPage extends React.Component {
 
     }
 
+    editable() {
+        console.log('this.props.user.id:', this.props.user.id);
+        console.log('this.props.collection.user.id:', this.props.collection.user.id);
+        return (this.props.user.id === this.props.collection.user.id);
+    }
+
 
     render() {
         var P = this;
         var C = this.props.collection;
         let className = 'edit-wrapper';
-        if (this.state.editing) {
+        if (P.state.editing) {
             className += ' editing';
+        }
+        if (!P.editable()) {
+            className += ' noedit';
         }
 
         return <div className="collection-page">

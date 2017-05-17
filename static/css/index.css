@@ -201,6 +201,9 @@ body {
 .editing .view-gallery {
     display: none;
 }
+.noedit .edit-button {
+    display: none;
+}
 
 body {
   font-family: "helvetica nene", sans-serif;
