@@ -13,6 +13,6 @@ urlpatterns = [
             views.change_collection_status,
             name='art-change-collection-status'),
         # Authentication
-        url(r'^login/$', auth_views.LoginView.as_view(), name='art-login'),
-        url(r'^logout/$', auth_views.LogoutView.as_view(), name='art-logout'),
+        url(r'^login$', views.login, name='art-login'),
+        url(r'^logout/?$', auth_views.LogoutView.as_view(), name='art-logout'),
 ]

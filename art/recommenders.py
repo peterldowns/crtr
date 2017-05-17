@@ -10,6 +10,11 @@ ArtworkTable = None
 CollectionsTable = None
 
 
+def random_artworks(n=10):
+    all_art = list(Artwork.vectored.all())
+    return random.sample(all_art, n)
+
+
 def get_artwork_table():
     global ArtworkTable
     if ArtworkTable is None:

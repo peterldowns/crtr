@@ -1,13 +1,18 @@
 import json
-import random
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 from django.http import Http404
 from django.shortcuts import get_object_or_404
+from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_POST
 from django.views.decorators.http import require_http_methods
+from django.middleware import csrf
+
 
 from art.models import Artwork
 from art.models import Collection
@@ -16,13 +21,39 @@ from art.recommenders import art_from_collection
 from art.recommenders import art_from_user
 from art.recommenders import collections_from_user
 from art.utils import json_response
+from art.utils import PROPS
 from art.utils import props_template
 from art.utils import to_dict
+from art.utils import to_json
 
 
-def random_artworks(n=10):
-    all_art = list(Artwork.vectored.all())
-    return random.sample(all_art, n)
+@require_http_methods(['POST', 'GET'])
+@ensure_csrf_cookie
+def login(request):
+    props = {
+        'csrftoken': csrf.get_token(request),
+    }
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            return redirect('art-home')
+        else:
+            props.update({
+                'username': username,
+                'password': password,
+                'error': True,
+            })
+    next_ = request.GET.get('next')
+    if next_ is not None:
+        props['next'] = next_
+    path = 'art/login.html'
+    context = {PROPS: to_json(props), request: request}
+    print('context:', context)
+    return render(request, path, context)
 
 
 @require_GET

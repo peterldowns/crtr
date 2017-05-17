@@ -1,0 +1,43 @@
+.login {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    text-align: left;
+}
+
+h3 {
+    font-size: 38px;
+}
+td {
+    font-size: 18px;
+}
+
+.button {
+    border-width: 1px;
+    border-color: black;
+    background-color: transparent;
+    padding: 10px !important;
+    margin-top: 20px !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 2px;
+    cursor: pointer;
+    border-radius: 0 !important;
+    padding: 15px 32px !important;
+}
+
+.label {
+    padding-right: 20px;
+}
+td {
+    padding-bottom: 10px;
+}
+.input input {
+    padding: 4px 8px;
+}
+h5 {
+    margin-bottom: 20px;
+}
