@@ -174,12 +174,29 @@ def collection(request, collection_id):
     raise NotImplementedError
 
 
+@json_response
 def collection_post(request, collection_id):
     user = request.user
     collection = get_object_or_404(Collection, id=collection_id)
     if not collection.user.id == user.id:
         raise Http404("What collection?")
-    raise NotImplementedError
+
+    data = json.loads(request.body.decode('utf-8'))
+    title = data.get('title', None)
+    description = data.get('description', None)
+    print('title', title)
+    print('description', description)
+    changed = False
+    if title is not None and collection.title != title:
+        collection.title = title
+        changed = True
+    if description is not None and collection.description != description:
+        collection.description = description
+        changed = True
+    if changed:
+        collection.save()
+
+    return to_dict({'collection': collection})
 
 
 @ensure_csrf_cookie

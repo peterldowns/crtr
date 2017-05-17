@@ -50,6 +50,7 @@ class GalleryPage extends React.Component {
         let G = this;
         let C = this.props.collection;
         if (!G.state.detailView) {
+            console.log('description:', C.description);
             var content = <div className="item-view">
                 <p className="description"> {C.description || 'lorem ipsum dolores'} </p>
                 <div key="works" className="works">

@@ -24,8 +24,7 @@ body {
     text-align: justify;
     max-width: 800px;
     color: #444;
-
-
+    white-space: pre-line;
 }
 
 .works {

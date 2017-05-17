@@ -142,8 +142,40 @@ body {
 .slideshow-container .button:hover {
     opacity: 1.0;
 }
-.collection-page h1 {
+.collection-title, .collection-description {
+    padding: 10px;
+    transition: background 0.2s linear;
+    white-space: pre-line;
+}
+.collection-title {
     font-size: 36px;
+    border-radius: 4px;
+    margin-right: 120px;
+}
+.collection-description {
+    font-size: 24px;
+    text-align: justify;
+    color: #444;
+    border-radius: 4px;
+}
+.editing .collection-title,
+.editing .collection-description {
+    background: #FFF;
+    text-align: left;
+}
+.edit-wrapper {
+    max-width: 1200px;
+    margin: auto;
+}
+.edit-button {
+    float: right;
+    padding: 10px 20px;
+    outline: 1px solid black;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 80px;
+    cursor: pointer;
+    text-align: center;
 }
 
 body {
