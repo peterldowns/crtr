@@ -8,8 +8,8 @@ fs.readdirSync(src).forEach(function(filename) {
     if (!/.jsx?$/g.test(filename)) {
         return;
     }
-    let path = src + filename;
-    let moduleName = filename.slice(0, filename.lastIndexOf('.'));
+    var path = src + filename;
+    var moduleName = filename.slice(0, filename.lastIndexOf('.'));
     entry[moduleName] = path;
 });
 
