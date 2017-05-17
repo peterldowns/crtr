@@ -149,6 +149,21 @@ def collections(request):
     }
 
 
+@require_GET
+@ensure_csrf_cookie
+@props_template('art/gallery.html')
+def gallery(request, collection_id):
+    print('hit gallery', collection_id)
+    user = request.user
+    collection = get_object_or_404(Collection, id=collection_id)
+    is_owner = (user == collection.user)
+    return {
+        'user': user if not user.is_anonymous else None,
+        'collection': collection,
+        'is_owner': is_owner,
+    }
+
+
 @require_http_methods(['GET', 'POST'])
 @login_required
 def collection(request, collection_id):

@@ -8,6 +8,7 @@ urlpatterns = [
         url(r'^artwork/(\d+)$', views.artwork, name='art-artwork'),
         url(r'^collections$', views.collections, name='art-collections'),
         url(r'^collections/(\d+)$', views.collection, name='art-collection'),
+        url(r'^galleries/(\d+)$', views.gallery, name='art-gallery'),
         url(r'^search$', views.search, name='art-search'),
         url(r'^search/(.*)$', views.search, name='art-search'),
         url(r'^api/search', views.api_search, name='art-api-search'),

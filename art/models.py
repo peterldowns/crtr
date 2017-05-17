@@ -80,7 +80,7 @@ class VectoredCollectionManager(models.Manager):
 
 class Collection(DictModel, models.Model):
     _json_fields = (
-            'id', 'title', 'user', 'date_created',
+            'id', 'title', 'user', 'date_created', 'description',
             'date_modified')
     _json_fields_m2m = {
             'artworks': lambda s, a: a.all(),
