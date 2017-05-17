@@ -47,7 +47,7 @@ class BigArt extends React.Component {
                 </div>
             </div>
             <div className="body white">
-                {info.map(([name, value]) => {
+                {info.filter(([name, value]) => !!value).map(([name, value]) => {
                     return <div key={name} className="big-art-info">
                         <div className="big-art-info-row">
                             <div className="big-art-info-cell name">{name}</div>
@@ -128,6 +128,10 @@ class ArtworkPage extends React.Component {
     }
 
     render() {
+        let className = "body white";
+        if (!this.state.collections.length) {
+            className += " empty";
+        }
         return <div className="artwork-page">
             <Nav user={this.props.user} links={homeLinks}/>
             <BigArt artwork={this.props.artwork}
@@ -141,7 +145,7 @@ class ArtworkPage extends React.Component {
                         })}
                 </TitleContainer>
             </div>
-            <div className="body white">
+            <div className={className}>
                 <h1 className="title-container-title"> Appears In </h1>
                 {this.renderCollections()}
             </div>

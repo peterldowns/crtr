@@ -1,0 +1,40 @@
+.search-bar {
+    padding: 20px;
+    max-width: 641px;
+    width: auto;
+    margin: auto;
+    padding-bottom: 0;
+}
+.search-bar-input {
+    white-space: nowrap;
+}
+.search-bar-title {
+    font-size: 48px;
+    font-weight: bold;
+    display: inline;
+}
+.search-bar-query {
+    font-weight: normal;
+    display: inline;
+    vertical-align: middle;
+    background: transparent;
+    padding: 12px 10px;;
+    border: none;
+    background: white;
+    border-radius: 2px;
+    position: relative;
+    width: 400px;
+    top: -12px;
+    font-size: 24px;
+    margin-left: 12px;
+    padding-bottom: 10px;
+}
+.search-bar-results {
+    text-align: right;
+    font-size: 20px;
+    margin-top: 10;
+    height: 10px;
+}
+.search-results {
+    text-align: center;
+}

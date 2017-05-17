@@ -9,7 +9,7 @@ urlpatterns = [
         url(r'^collections$', views.collections, name='art-collections'),
         url(r'^collections/(\d+)$', views.collection, name='art-collection'),
         url(r'^search$', views.search, name='art-search'),
-        url(r'^search/(.+)$', views.search, name='art-search'),
+        url(r'^search/(.*)$', views.search, name='art-search'),
         url(r'^api/search', views.api_search, name='art-api-search'),
         url(r'^api/change_collection_status',
             views.change_collection_status,
