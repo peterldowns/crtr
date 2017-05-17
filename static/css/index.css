@@ -300,7 +300,7 @@ nav.nav li.login {
     text-align: justify;
 }
 
-.big-art-tools {
+.big-art-tools > div {
     margin: 20px;
     display: inline-block;
     text-align: center;
@@ -344,10 +344,12 @@ nav.nav li.login {
     margin-left: -20px;
 }
 .art-ctrl-add {
-    border-color: black !important;
+    border-color: #224f01 !important;
+    color: #224f01;
 }
 .art-ctrl-remove {
-    border-color: red !important;
+    border-color: #7b0101 !important;
+    color: #7b0101;
 }
 
 
