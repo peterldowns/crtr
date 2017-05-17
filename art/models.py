@@ -80,6 +80,7 @@ class Collection(DictModel, models.Model):
             'artworks': lambda s, a: a.all(),
         }
 
+    objects = models.Manager()
     vectored = VectoredCollectionManager()
 
     id = models.AutoField(primary_key=True)
