@@ -73,4 +73,67 @@ body {
 .collection-link:hover {
     color: #000;
 }
+.gallery-page {
+    padding-right: 20px;
+}
+.details-view-splitpane {
+    width: 100%;
+}
+.details-view-artwork {
+    height: auto;
+    padding-right: 40px;
+}
+.details-view-artwork, .details-view-info {
+    max-width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.details-view-info {
+    font-size: 20px;
+    line-height: 1.4em;
+}
+.artwork-label {
+    text-align: justify;
+    padding-bottom: 40px;
+}
+.details-view-nav {
+    display: table;
+    width: 100%;
+    padding-bottom:40px;
+    font-size: 18px;
+}
+.nav-item {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 33%;
+}
+.nav-left {
+    text-align: left;
+}
+.nav-title {
+    font-size: 36px;
+    font-family: "pt serif", serif;
+    font-weight: normal;
+    margin: 0;
+}
+.nav-right {
+    text-align: right;
+    vertical-align: bottom;
+}
+.ctrl {
+    margin-left: 20px;
+    display: inline-block;
+}
+.ctrl.button {
+    color: #444;
+    border: 1px solid #444;
+    padding: 10px 20px;
+    transition: border-color 0.2s linear, color 0.2s linear;
+}
+.ctrl.button:hover {
+    color: #000;
+    border-color: #000;
+}
 

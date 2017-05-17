@@ -12,6 +12,8 @@ var Cookies = require('js-cookie');
 var moment = require('moment');
 
 
+
+
 class BigArt extends React.Component {
     constructor(props) {
         super(props);

@@ -2,6 +2,7 @@
 var React = require('react');
 var DOM = require('react-dom');
 var request = require('browser-request');
+var moment = require('moment');
 
 var {CollectionRow} = require('./components/collection.jsx');
 var {backgroundImg, collectionsLink} = require('./components/utils.jsx');
@@ -50,7 +51,6 @@ class GalleryPage extends React.Component {
         let G = this;
         let C = this.props.collection;
         if (!G.state.detailView) {
-            console.log('description:', C.description);
             var content = <div className="item-view">
                 <p className="description"> {C.description || 'lorem ipsum dolores'} </p>
                 <div key="works" className="works">
@@ -61,25 +61,48 @@ class GalleryPage extends React.Component {
             </div>;
         } else {
             let A = G.mapping[G.state.detailView];
+            let info = [
+                ['Title', A.title],
+                ['Classification', A.classification],
+                ['Department', A.department],
+                ['Culture', A.culture],
+                ['Medium', A.medium],
+                ['Date', moment(A.created).format('MMMM Do YYYY')],
+            ];
             var content = <div key="details-view" className="details-view">
-                <div className="details-view-splitpane">
-                    <div className="details-view-artwork"
-                        style={backgroundImg(A.image_url_small)}>
+                <div className="details-view-nav">
+                    <div className="nav-item nav-left">
+                        <h2 className="nav-title"> {A.title} </h2>
                     </div>
-                    <div className="details-view-info">
+                    <div className="nav-item nav-center"></div>
+                    <div className="nav-item nav-right">
+                        <div  onClick={G.itemClick()} className="ctrl button"> Back </div>
                     </div>
                 </div>
-                <div className="details-view-nav">
-                    <div className="nav-left"> Previous </div>
-                    <div className="nav-center"> {A.title} </div>
-                    <div className="nav-right"> Next </div>
+                <div className="details-view-splitpane">
+                    <img className="details-view-artwork" src={A.image_url_large}/>
+                    <div className="details-view-info">
+                        <div className='artwork-label'>
+                            {A.label}
+                        </div>
+                        <div className='big-art-info-table'>
+                            {info.filter(([name, value]) => !!value).map(([name, value]) => {
+                                return <div className="big-art-info-row" key={name}>
+                                    <div className="big-art-info-cell name">{name}</div>
+                                    <div className="big-art-info-cell value">{value}</div>
+                                </div>;
+                            })}
+                    </div>
+
+
+                    </div>
                 </div>
             </div>;
         }
 
         return <div className="gallery-page">
             <a className="collection-link" target="_blank" href={collectionsLink(C.id)}> View Collection </a>
-            <h1 className="title" onClick={G.itemClick()}> {C.title} </h1>
+            <h1 className="title"> {C.title} </h1>
             {content}
         </div>;
     }
