@@ -28,9 +28,6 @@ def update_label(artwork):
         return
     tag = tags[0]
     label = tag.text_content().strip()
-    if len(label) < 20:
-        print('VERY SUSPICIOUS %d @ %s' % (len(label), artwork.museum_link))
-        return
     artwork.label = label
     artwork.save()
 
