@@ -196,5 +196,27 @@ def search_get(request):
     }
 
 
+@login_required
+@json_response
 def search_post(request):
-    raise NotImplementedError
+    data = json.loads(request.body.decode('utf-8'))
+    query = data.get('query')
+    fields = ('title', 'classification', 'medium', 'department', 'culture')
+    count = 50
+    results = []
+    error = None
+    if query:
+        for field_name in fields:
+            if len(results) >= count:
+                break
+            kwargs = {"%s__icontains" % field_name: query}
+            results.extend(
+                    Artwork.vectored
+                           .filter(**kwargs)[:(count - len(results))])
+    else:
+        error = 'Missing query'
+
+    return to_dict({
+        'results': results,
+        'error': error,
+    })

@@ -1,6 +1,8 @@
 'use strict';
 var React = require('react');
 var DOM = require('react-dom');
+var request = require('browser-request');
+var Cookies = require('js-cookie');
 
 var {Nav} = require('./components/nav.jsx');
 var {homeLinks} = require('./components/utils.jsx');
@@ -13,14 +15,81 @@ var {ArtCard} = require('./components/artCard.jsx');
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+
+        this.debounce = 500 /*ms */;
+        this.state = {
+            query: '',
+            results: [],
+            timeout: null,
+            counter: 1,
+        };
+
+        this.onQuery = this.onQuery.bind(this);
+        this.makeQuery = this.makeQuery.bind(this);
+        this.sendQuery = this.sendQuery.bind(this);
     }
 
+    onQuery(event) {
+        let S = this;
+        let query = event.target.value;
+        let counter = this.state.counter + 1;
+        S.setState({query: query, counter: counter});
+        if (S.state.timeout !== null) {
+            clearTimeout(S.state.timeout);
+        }
+        let timeout = setTimeout(S.makeQuery(query, counter), S.debounce);
+        S.setState({timeout: timeout});
+    }
+
+    makeQuery(query, counter) {
+        let S = this;
+        return function() {
+            S.sendQuery(query, counter);
+        };
+    }
+
+    sendQuery(query, counter) {
+        let S = this;
+        let payload = {
+            query: query,
+        };
+        request({
+            method: 'POST',
+            uri: '/search',
+            body: payload,
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            json: true,
+        }, function(error, response, body) {
+            if (error) {
+                console.error(error, response, body);
+                return;
+            }
+            if (S.state.counter !== counter) {
+                console.error('response too old:', body);
+                return;
+            }
+            console.log('body:', body);
+            S.setState({
+                results: body.results,
+            });
+        });
+    }
+
+
     render() {
-        return <div>
+        return <div className="search-page">
             <Nav user={this.props.user} links={homeLinks}/>
-            <div className="body">
-            <h1> Hello </h1>
+            <div className="search-bar body gray">
+                <h1> Search </h1>
+                <input type="text" value={this.state.query} onChange={this.onQuery}/>
+                <p> {this.state.query ? `${this.state.results.length} results` : ''} </p>
+            </div>
+            <div className="search-results body white">
+                {this.state.results.map((artwork) => {
+                    return <ArtCard key={artwork.id} artwork={artwork}/>;
+                })}
             </div>
         </div>;
     }
