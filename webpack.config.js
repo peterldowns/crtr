@@ -1,16 +1,24 @@
 const path = require('path');
+const fs = require('fs');
+
+
+const src = './client/'
+const entry = {};
+fs.readdirSync(src).forEach(function(filename) {
+    if (!/.jsx?$/g.test(filename)) {
+        return;
+    }
+    let path = src + filename;
+    let moduleName = filename.slice(0, filename.lastIndexOf('.'));
+    entry[moduleName] = path;
+});
+
+
 module.exports = {
     devtool: 'source-map',
-    entry: {
-        index: './client/index.jsx',
-        home: './client/home.jsx',
-        artwork: './client/artwork.jsx',
-        collections: './client/collections.jsx',
-        collection: './client/collection.jsx',
-        search: './client/search.jsx',
-    },
+    entry: entry,
     output: {
-        path: path.resolve('static/js'),
+        path: path.resolve('./static/js'),
         pathinfo: true,
         filename: '[name].js',
     },
