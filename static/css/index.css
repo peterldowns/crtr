@@ -267,12 +267,22 @@ nav.nav li.login {
 }
 .big-art-tools {
     float: right;
+    margin-left: 40px;
+    margin-bottom: 40px;
+    padding: 10px;
+    border: 1px solid black;
 }
 .big-art-tools::after {
     clear: both;
 }
 .collection-artworks {
     margin-left: -20px;
+}
+.art-ctrl-add {
+    border-color: black !important;
+}
+.art-ctrl-remove {
+    border-color: red !important;
 }
 
 

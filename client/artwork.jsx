@@ -18,15 +18,24 @@ class BigArt extends React.Component {
         this.state = {};
     }
 
+    renderControl() {
+        if (this.props.in_collection) {
+            return <div key="remove" className="button art-ctrl-remove" onClick={this.props.toggle}>
+                + My Collection
+            </div>;
+        }
+        return <div key="add" className="button art-ctrl-add" onClick={this.props.toggle}>
+            &ndash; My Collection
+        </div>;
+    }
+
     render() {
         var artwork = this.props.artwork;
         return <div className="big-art">
             {this.renderImage()}
             <div className="big-art-info">
                 <div className="big-art-tools">
-                    <div className="button" onClick={this.props.toggle}>
-                        {this.props.in_collection ? 'REMOVE FROM MY COLLECTION' : 'ADD TO MY COLLECTION'}
-                    </div>
+                    {this.renderControl()}
                 </div>
 
                 <p> <b>Title</b>: {artwork.title} </p>
