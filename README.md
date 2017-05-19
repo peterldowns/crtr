@@ -15,9 +15,17 @@
     * [Fast R-CNN](https://github.com/rbgirshick/fast-rcnn#requirements-hardware) implementation for doing some feature extraction. Can hopefully also be used for [similarity search](http://code.flickr.net/2017/03/07/introducing-similarity-search-at-flickr/).
         * Instead of silly hand-rolled, maybe use [FALCONN](https://falconn-lib.org/pdoc/falconn/) for cosine similarity search
         * It would be dope to find a trained version of [this model](https://arxiv.org/pdf/1412.7755v2.pdf)
+        * [py-cooperhewitt](https://github.com/cooperhewitt/py-cooperhewitt-roboteyes-colors) for color extraction
+        * [Minkowski](http://www.ee.columbia.edu/ln/dvmm/researchProjects/MultimediaIndexing/VisualSEEk/acmmm96/node8.html) distance metric for image similarity
+        * [sk-learn](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) for word vectors -> features
 * Frontend
     * Frontend components will be created with [React](https://facebook.github.io/react/).
     * Standard HTML/CSS
+    
+### More Links
+
+- [Barnes Readme](https://github.com/BarnesFoundation/CollectionWebsite/blob/master/ARCHITECTURE.md) for some inspiration
+
 
 ### Timeline
 * April 19, 2017 – Initial Project Presentation, feedback
@@ -35,7 +43,7 @@ $ pip install -r requirements.txt
 $ yarn install
 ```
 
-Then set up hte database:
+Then set up the database:
 
 ```bash
 $ ./manage.py migrate
