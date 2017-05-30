@@ -4,7 +4,24 @@
 
 Read [the introductory blogpost here](https://cms633.github.io/updates/peter-pojiang-chaoran-xinwen-project-summary.html). Read [the final design report here](./design-report.pdf).
 
-### Technical Overview
+### Installation / Setup
+
+First, install [yarn](https://yarnpkg.com/) and Python 3.5. Then install the Python and Javascript dependencies:
+
+```bash
+$ pip install -r requirements.txt
+$ yarn install
+```
+
+Then set up the database:
+
+```bash
+$ ./manage.py migrate
+```
+
+Then, check out the instructions in `data/README.md` to learn how to populate the database with the dataset.
+
+### Technical Overview / Ideas
 
 * Backend
     * Python
@@ -25,21 +42,3 @@ Read [the introductory blogpost here](https://cms633.github.io/updates/peter-poj
 ### More Links
 
 - [Barnes Readme](https://github.com/BarnesFoundation/CollectionWebsite/blob/master/ARCHITECTURE.md) for some inspiration
-
-
-### Installation / Setup
-
-First, install [yarn](https://yarnpkg.com/) and Python 3.5. Then install the Python and Javascript dependencies:
-
-```bash
-$ pip install -r requirements.txt
-$ yarn install
-```
-
-Then set up the database:
-
-```bash
-$ ./manage.py migrate
-```
-
-Then, check out the instructions in `data/README.md` to learn how to populate the database with the dataset.
