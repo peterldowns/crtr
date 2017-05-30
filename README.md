@@ -2,7 +2,7 @@
 
 ### Background
 
-[Read the blogpost here.](https://cms633.github.io/updates/peter-pojiang-chaoran-xinwen-project-summary.html)
+Read [the introductory blogpost here](https://cms633.github.io/updates/peter-pojiang-chaoran-xinwen-project-summary.html). Read [the final design report here](./design-report.pdf).
 
 ### Technical Overview
 
@@ -19,13 +19,6 @@
     * Frontend components will be created with [React](https://facebook.github.io/react/).
     * Standard HTML/CSS
 
-### Timeline
-* April 19, 2017 – Initial Project Presentation, feedback
-* April 26, 2017 – Short write-up of project progress (Github), brief in-class presentation, possible paper prototype
-* May 3, 2017 – Written summary of project progress, draft of Digital Prototype, refinement of prototype, brief presentation & feedback in class
-* May 10, 2017 – Presentation of prototypes (dry run), draft of final paper
-* May 17, 2017 – Presentations of completed projects, design document completed 
-
 ### Installation / Setup
 
 First, install [yarn](https://yarnpkg.com/) and Python 3.5. Then install the Python and Javascript dependencies:
@@ -35,7 +28,7 @@ $ pip install -r requirements.txt
 $ yarn install
 ```
 
-Then set up hte database:
+Then set up the database:
 
 ```bash
 $ ./manage.py migrate
