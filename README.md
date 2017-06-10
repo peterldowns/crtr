@@ -65,6 +65,7 @@ Then, check out the instructions in `data/README.md` to learn how to populate th
         * [py-cooperhewitt](https://github.com/cooperhewitt/py-cooperhewitt-roboteyes-colors) for color extraction
         * [Minkowski](http://www.ee.columbia.edu/ln/dvmm/researchProjects/MultimediaIndexing/VisualSEEk/acmmm96/node8.html) distance metric for image similarity
         * [sk-learn](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) for word vectors -> features
+        * [fine-grained image similarity](https://users.eecs.northwestern.edu/~jwa368/pdfs/deep_ranking.pdf)
 * Frontend
     * Frontend components will be created with [React](https://facebook.github.io/react/).
     * Standard HTML/CSS
@@ -72,3 +73,6 @@ Then, check out the instructions in `data/README.md` to learn how to populate th
 ### More Links
 
 - [Barnes Readme](https://github.com/BarnesFoundation/CollectionWebsite/blob/master/ARCHITECTURE.md) for some inspiration
+- [TATE | RECOGNITION](http://recognition.tate.org.uk/#visitor_matches)
+- [Rutgers research on image similarity](https://arxiv.org/abs/1408.3218)
+  - [Exactly what we want](https://arxiv.org/abs/1505.00855)
