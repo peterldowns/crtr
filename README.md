@@ -21,6 +21,30 @@ $ ./manage.py migrate
 
 Then, check out the instructions in `data/README.md` to learn how to populate the database with the dataset.
 
+### TODO
+- [ ] Artist pages
+  - [ ] Support artist images
+  - [ ] Scrape better bios from the collection
+  - [ ] Show list of artworks
+  - [ ] Convert artist 'A|B|C' -> three separate artists 'A', 'B', 'C'
+- [ ] Similarity metrics
+  - [ ] Use `fasttext` to come up with document vectors for each artwork, reduced in dimensionality
+  - [ ] Train VGGNet to predict document vectors based on images
+  - [ ] Similarity metrics for Artists as well as collections
+  - [ ] Spin off FALCONN tables into separate processes
+    - [ ] Update vectors with post-save triggers
+    - [ ] Implement vector updates in FALCONN: https://github.com/FALCONN-LIB/FALCONN/issues/2
+- [ ] Home Page
+  - [ ] Better description
+- [ ] Account creation
+  - [ ] Log in with Facebook
+  - [ ] Centralized website that allows viewing collections in each museum participating?
+- [ ] In-collection controls
+  - [ ] Ordering artworks
+  - [ ] Removing artworks
+    - [ ] Show a placeholder after deleting that allows for recovery in same edit-session
+- [ ] Domain name?
+
 ### Technical Overview / Ideas
 
 * Backend
