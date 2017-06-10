@@ -33,8 +33,10 @@ class BigArt extends React.Component {
 
     render() {
         let artwork = this.props.artwork;
+        let artist = artwork.artists && artwork.artists[0];
         let info = [
             ['Title', artwork.title],
+            ['Artist', artist && artist.name],
             ['Classification', artwork.classification],
             ['Department', artwork.department],
             ['Culture', artwork.culture],
@@ -60,9 +62,6 @@ class BigArt extends React.Component {
             </div>
             <div className="big-art-bottom body white">
                 <div className="big-art-info">
-                    <div className={labelClass}>
-                        {artwork.label}
-                    </div>
                     <div className={tableClass}>
                         {info.filter(([name, value]) => !!value).map(([name, value]) => {
                             return <div className="big-art-info-row" key={name}>
@@ -70,6 +69,9 @@ class BigArt extends React.Component {
                                 <div className="big-art-info-cell value">{value}</div>
                             </div>;
                         })}
+                    </div>
+                    <div className={labelClass}>
+                        {artwork.label}
                     </div>
                 </div>
             </div>

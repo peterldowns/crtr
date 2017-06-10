@@ -212,7 +212,9 @@ def collection_get(request, collection_id):
 
 
 def do_search(query, count=100):
-    fields = ('title', 'classification', 'medium', 'department', 'culture')
+    fields = (
+            'title', 'classification', 'medium', 'department', 'culture',
+            'artists__name', 'artists__bio')
     results = []
     for field_name in fields:
         if len(results) >= count:
@@ -229,7 +231,6 @@ def do_search(query, count=100):
 @ensure_csrf_cookie
 @props_template('art/search.html')
 def search(request, query=None):
-    print('query:', query)
     return {
         'user': request.user,
         'query': query,

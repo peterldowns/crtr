@@ -10,6 +10,7 @@ django.setup()
 
 from csv import DictReader  # noqa
 from art.models import Artwork  # noqa
+from art.models import Artist  # noqa
 
 
 def load_full_collection():
@@ -70,28 +71,54 @@ def create_object(row):
      'Title': 'Manuscript Sampler',
      '\ufeffObject Number': '34.100.72'}
 
-    # TODO: create Artist object.
-    a = Artwork()
-    a.museum_id = row['Object ID']
-    a.title = row['Title']
-    a.classification = row['Classification']
-    a.department = row['Department']
-    a.culture = row['Culture']
-    a.medium = row['Medium']
-    a.is_highlight = (row['Is Highlight'] == 'True')
+    w = None
+    if (Artwork.objects.filter(museum_id=row['Object ID']).count() == 0):
+        w = Artwork()
+        w.museum_id = row['Object ID']
+        w.title = row['Title']
+        w.classification = row['Classification']
+        w.department = row['Department']
+        w.culture = row['Culture']
+        w.medium = row['Medium']
+        w.is_highlight = (row['Is Highlight'] == 'True')
 
-    # TODO: better datetime parsing
-    try:
-        a.created = maya.parse(row['Object Begin Date']).datetime()
-    except Exception:
-        pass
+        # TODO: better datetime parsing
+        try:
+            w.created = maya.parse(row['Object Begin Date']).datetime()
+        except Exception:
+            pass
 
-    a.museum_id = row['Object ID']
-    a.museum_link = row['Link Resource']
-    a.museum_name = 'Metropolitan Museum of Art'
-    a.public_domain = True
+        w.museum_id = row['Object ID']
+        w.museum_link = row['Link Resource']
+        w.museum_name = 'Metropolitan Museum of Art'
+        w.public_domain = True
+        w.save()
 
-    a.save()
+    if row['Artist Display Name']:
+        if w is None:
+            w = Artwork.objects.get(museum_id=row['Object ID'])
+
+        artist_names = row['Artist Display Name'].split('|')
+        for artist_name in artist_names:
+            try:
+                a = Artist.objects.get(name=row['Artist Display Name'])
+            except Artist.DoesNotExist:
+                a = Artist()
+                a.name = artist_name
+                if len(artist_names) == 1:
+                    begin = row['Artist Begin Date']
+                    try:
+                        a.date_begin = maya.parse(begin).datetime()
+                    except Exception:
+                        a.date_begin = None
+                    end = row['Artist End Date']
+                    try:
+                        a.date_end = maya.parse(end).datetime()
+                    except Exception:
+                        a.date_end = None
+                a.save()
+            w.artists.add(a)
+            w.save()
 
 
 if __name__ == '__main__':

@@ -36,6 +36,8 @@ Then, check out the instructions in `data/README.md` to learn how to populate th
     - [ ] Implement vector updates in FALCONN: https://github.com/FALCONN-LIB/FALCONN/issues/2
 - [ ] Home Page
   - [ ] Better description
+- [ ] Artwork page
+  - [ ] Full-size image tiles with [OpenSeadragon](https://openseadragon.github.io/)
 - [ ] Account creation
   - [ ] Log in with Facebook
   - [ ] Centralized website that allows viewing collections in each museum participating?
@@ -44,6 +46,10 @@ Then, check out the instructions in `data/README.md` to learn how to populate th
   - [ ] Removing artworks
     - [ ] Show a placeholder after deleting that allows for recovery in same edit-session
 - [ ] Domain name?
+  - [ ] Set up `crtr.peterdowns.com` to demo in the meantime
+- [ ] Reach out
+  - [ ] Coordinate with the team
+  - [ ] Talk to the Barnes Foundation
 
 ### Technical Overview / Ideas
 

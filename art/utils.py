@@ -20,7 +20,7 @@ class DictModel():
         return to_json(self)
 
 
-def to_dict(blob):
+def to_dict(blob, followed_relation=False):
     if isinstance(blob, dict):
         return {key: to_dict(value) for key, value in blob.items()}
     if isinstance(blob, list):

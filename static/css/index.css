@@ -311,6 +311,12 @@ nav.nav li.login {
     font-family: "helvetica nene", sans-serif;
     font-size: 24px;
 }
+.art-card-artist {
+    color: #888;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
 .artwork-page {
     padding-bottom: 80px;
 }
@@ -356,7 +362,7 @@ nav.nav li.login {
     font-size: 28px;
     margin-bottom: 60px;
     margin-top: 20px;
-    text-align: justify;
+    text-align: left;
 }
 
 .big-art-tools > div {
@@ -389,8 +395,8 @@ nav.nav li.login {
     padding: 20px 0;
     border-top: 1px solid #ccc;
 }
-.big-art-info-table.no-label .big-art-info-row:first-child .big-art-info-cell {
-    border-top: none;
+.big-art-info-table .big-art-info-row:first-child .big-art-info-cell {
+  border-top: none;
 }
 .big-art-info-cell.name {
     width: 200px;

@@ -13,12 +13,12 @@ class User(DictModel, AbstractUser):
         return self.collections.first()
 
 
-class Artist(models.Model):
+class Artist(DictModel, models.Model):
+    _json_fields = ('pk', 'name', 'bio', 'date_begin', 'date_end')
     name = models.TextField()
-    year_begin = models.IntegerField()
-    year_end = models.IntegerField()
+    date_begin = models.DateField(null=True)
+    date_end = models.DateField(null=True)
     bio = models.TextField()
-    nationality = models.TextField()
 
 
 class HighlightedArtworkManager(models.Manager):
@@ -36,6 +36,9 @@ class Artwork(DictModel, models.Model):
     _json_fields = (
             'id', 'title', 'label', 'classification', 'department', 'culture',
             'medium', 'created', 'image_url_small', 'image_url_large')
+    _json_fields_m2m = {
+            'artists': lambda s, a: a.all(),
+        }
 
     objects = models.Manager()
     highlighted = HighlightedArtworkManager()
@@ -44,6 +47,8 @@ class Artwork(DictModel, models.Model):
     id = models.AutoField(primary_key=True)
     title = models.TextField(blank=True, null=False)
     label = models.TextField(blank=True, null=False)
+    artists = models.ManyToManyField('art.Artist',
+                                      related_name='artworks')
     classification = models.TextField(blank=True, null=False)
     department = models.TextField(blank=True, null=False)
     culture = models.TextField(blank=True, null=False)
