@@ -73,6 +73,9 @@ Then, check out the instructions in `data/README.md` to learn how to populate th
 ### More Links
 
 - [Barnes Readme](https://github.com/BarnesFoundation/CollectionWebsite/blob/master/ARCHITECTURE.md) for some inspiration
+- [Barnes Followup](https://medium.com/@shell7/stuffed-animals-computer-vision-and-the-barnes-foundation-collection-online-ed787d3baded)
 - [TATE | RECOGNITION](http://recognition.tate.org.uk/#visitor_matches)
+- [Image Retraining](https://news.ycombinator.com/item?id=14485785)
+  - [and even more](https://www.tensorflow.org/tutorials/image_retraining)
 - [Rutgers research on image similarity](https://arxiv.org/abs/1408.3218)
   - [Exactly what we want](https://arxiv.org/abs/1505.00855)
